@@ -1,21 +1,14 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your entire site, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# `jekyll serve`. If you change this file, please restart the server process.
-
 # Site Settings
-locale                   : "en"
-title                    : "Site Title"
+locale                   : "zh-CN"
+title                    : "PPHOME"
 title_separator          : "-"
-name                     : "Your Name"
-description              : "An amazing website."
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+name                     : "王佳林"
+description              : "整理记录一些学到的知识，也许会分享一些生活趣事"
+url                      : "http://ppmenghome.com"
+baseurl                  : 
+repository               : "ppmeng/ppmeng.github.io"
 teaser                   : # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
-# breadcrumbs            : false # true, false (default)
+breadcrumbs              : true
 words_per_minute         : 200
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
@@ -77,19 +70,19 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "王佳林"
   avatar           : "bio-photo.jpg"
-  bio              : "I am an amazing person."
-  location         : "Somewhere"
-  email            :
-  uri              :
+  bio              : "努力做个有趣的人"
+  location         : "ShenZhen China"
+  email            : "yswdzlg@gmail.com"
+  uri              : "http://ppmenghome.com"
   bitbucket        :
   codepen          :
   dribbble         :
   flickr           :
   facebook         :
   foursquare       :
-  github           :
+  github           : "https://github.com/ppmeng"
   google_plus      :
   keybase          :
   instagram        :
@@ -102,7 +95,7 @@ author:
   tumblr           :
   twitter          :
   vine             :
-  weibo            :
+  weibo            : "http://weibo.com/2797646940/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1"
   xing             :
   youtube          :
 
