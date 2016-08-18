@@ -3,15 +3,15 @@ locale                   : "zh-CN"
 title                    : "PPHOME"
 title_separator          : "-"
 name                     : "王佳林"
-description              : "整理记录一些学到的知识，也许会分享一些生活趣事"
+description              : "a Chinese blog website powered by Jekyll & Minimal Mistakes."
 url                      : "http://ppmenghome.com"
-baseurl                  : 
+baseurl                  : ~
 repository               : "ppmeng/ppmeng.github.io"
-teaser                   : # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
+teaser                   : "bg-img.jpg" # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : true
 words_per_minute         : 200
 comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
+  provider               : false # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
   disqus:
     shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
@@ -21,24 +21,24 @@ comments:
     appid                :
     num_posts            : # 5 (default)
     colorscheme          : # "light" (default), "dark"
-staticman:
-  allowedFields          : ['name', 'email', 'url', 'message']
-  branch                 : # "master", "gh-pages"
-  commitMessage          : "New comment."
-  filename               : comment-{@timestamp}
-  format                 : "yml"
-  moderation             : true
-  path                   : "_data/comments/{options.slug}"
-  requiredFields         : ['name', 'email', 'message']
-  transforms:
-    email                : "md5"
-  generatedFields:
-    date:
-      type               : "date"
-      options:
-        format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
+  staticman:
+    allowedFields          : ['name', 'email', 'url', 'message']
+    branch                 : # "master", "gh-pages"
+    commitMessage          : "New comment."
+    filename               : comment-{@timestamp}
+    format                 : "yml"
+    moderation             : true
+    path                   : "_data/comments/{options.slug}"
+    requiredFields         : ['name', 'email', 'message']
+    transforms:
+      email                : "md5"
+    generatedFields:
+      date:
+        type               : "date"
+        options:
+          format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 atom_feed:
-  path                   : # blank (default) uses feed.xml
+  path                   : # blank (default) uses feed.xml 为博客添加RSS订阅功能
 
 # SEO Related
 google_site_verification :
@@ -82,7 +82,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "https://github.com/ppmeng"
+  github           : "ppmeng"
   google_plus      :
   keybase          :
   instagram        :
@@ -95,7 +95,7 @@ author:
   tumblr           :
   twitter          :
   vine             :
-  weibo            : "http://weibo.com"
+  weibo            : "ppmenghome"
   xing             :
   youtube          :
 
@@ -164,7 +164,7 @@ sass:
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones The default is the local time zone, as set by your operating system
 
 
 # Plugins
@@ -219,3 +219,6 @@ compress_html:
   clippings: all
   ignore:
     envs: development
+
+header:
+  image: bg-img.jpg
