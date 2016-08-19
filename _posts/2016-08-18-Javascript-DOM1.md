@@ -1,6 +1,5 @@
 ---
 title: "《JavaScript DOM 编程艺术》读书笔记（一）"
-excerpt_seoarator:
 categories: "JavaScript"
 tags: ["JavaScript", "DOM", "读书笔记"]
 ---

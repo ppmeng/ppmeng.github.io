@@ -1,6 +1,5 @@
 ---
 title: "使用jekyll + github 搭建博客"
-excerpt_seoarator:
 categories: "jekyll"
 tags: ["jekyll", "github", "domain name"]
 ---

@@ -7,7 +7,7 @@ description              : "a Chinese blog website powered by Jekyll & Minimal M
 url                      : "http://ppmenghome.com"
 baseurl                  : ~
 repository               : "ppmeng/ppmeng.github.io"
-teaser                   : "bg-img.jpg" # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
+teaser                   : "bg-img.png"
 breadcrumbs              : true
 words_per_minute         : 200
 comments:
@@ -62,7 +62,7 @@ analytics:
 # Site Author
 author:
   name             : "王佳林"
-  avatar           : "1.png"
+  avatar           : "bio-photo.png"
   bio              : "努力做个有趣的人"
   location         : "ShenZhen China"
   email            : "yswdzlg@gmail.com"
@@ -91,44 +91,6 @@ author:
   youtube          :
 
 
-
-# Archives
-#  Type
-#  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)
-#  - Jekyll Archives plugin archive pages ~> type: jekyll-archives
-#  Path (examples)
-#  - Archive page should exist at path when using Liquid method or you can
-#    expect broken links (especially with breadcrumbs enabled)
-#  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
-#  - <base_path/categories/my-awesome-category/index.html ~> path: /categories/
-#  - <base_path/my-awesome-category/index.html ~> path: /
-category_archive:
-  type: liquid
-  path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
-# https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
-
-# Outputting
-permalink: /:categories/:title/
-paginate: 3 # amount of posts to show
-paginate_path: /page:num/
-timezone: Asia/Shanghai
-
-header:
-  image: bg-img.jpg
-
 # Defaults
 defaults:
   # _posts
@@ -151,6 +113,18 @@ defaults:
       layout: single
       author_profile: true
 
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+
+# Outputting
+permalink: /:categories/:title/
+paginate: 5 # amount of posts to show
+paginate_path: /page:num/
+timezone: Asia/Shanghai
 
 # Reading Files
 include:
