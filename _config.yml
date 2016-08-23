@@ -4,8 +4,8 @@ title                    : "PPHOME"
 title_separator          : "-"
 name                     : "王佳林"
 description              : "a Chinese blog website powered by Jekyll & Minimal Mistakes."
-url                      : "http://ppmeng.github.io"
-baseurl                  : ~
+url                      : "http://ppmenghome.com"
+baseurl                  : 
 repository               : "ppmeng/ppmeng.github.io"
 teaser                   : "bg-img.png"
 breadcrumbs              : true
