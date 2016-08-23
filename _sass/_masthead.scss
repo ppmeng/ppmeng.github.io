@@ -47,7 +47,13 @@
   white-space: nowrap;
 
   &--lg {
-    padding-right: 4em;
+    padding-right: 2em;
     font-weight: 700;
+  }
+  
+  @media (min-width: 64em) {
+    &--lg {
+      width: 16.94915%;
+    }
   }
 }
