@@ -15,9 +15,9 @@ github注册方法很多博客都有讲到，随便搜都可以找到很详细�
 3. 最后就是在博客的根目录（eg：ppmeng.github.io）下增加一个新的文件CNAME，内容为你购买的域名，比如我购买的是ppmenghome.com（注意文件名千万不要写错，恩，我第一次写错了 ，然后折腾半天才发现。。）
 
 - 若有域名绑定有问题可以参考的链接： 
-
 1. [Customizing GitHub Pages / Troubleshooting custom domains](https://help.github.com/articles/troubleshooting-custom-domains/ )
 2. [浅谈github页面域名绑定](http://www.cnblogs.com/imsoft/p/5043206.html)
+
 - 打开后发现提示链接不安全，偶尔还会打不开，博客是为了分享内容的，这样不友好怎么可以，然后我就试图给网站申请个ssl，最好是免费的，可是很多人推荐的Kloudse要暂停服务了，而我这个托管于github的博客，别的方法也比较麻烦，对了有个博客，[申请"小绿锁"HTTPS](http://www.jianshu.com/p/9a6bc31d329d)我当时看到了, 写的倒是挺详细的，当时看错了，gitlab看成了github，折腾半天进行不下去了才发现。。现在寻找其他的办法感觉也不太可信，所以最后我采用的方法就是放弃了https，改用http，有的jekyll模板的_config.yml文件里面会有force-https，记得要改成false
 
 ## jekyll配置
