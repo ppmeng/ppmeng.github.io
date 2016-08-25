@@ -91,51 +91,51 @@ function prepareSlideshow() {
 - 到这里我们应该就明白该将**setTimeout**用一个名字来标识，在下一次调用**moveElement**的时候先使用**clearTimeout**来清除之前移动事件。首先很容易理解这个名字不能使局部变量，因为若是局部变量的话意味着在**clearTimeout** 函数上下文中不存在，也就没有办法使清除操作进行；其次如果在函数外部定义一个全局变量来使用的话，就会出现一个问题，明明我们全部的操作都是在一个函数内部而不是很多函数都会使用，那么使用全局变量就有点大材小用。我们需要一个可以在**moveElement**函数内部当全局存在的局部变量，听起来好像是有点怪。。但这种变量我们一直都有使用，就是“属性”。
 - 使用自定义的属性来命名函数是作者想到的一个很独特的方法，给移动的元素传建一个独特的属性来标识函数，下面就是改进后的核心代码啦~对了，附赠一个小小的demo------[点击查看demo](http://ppmeng.github.io/somedemo/JavaScript/animation/changeimg/second/2.html )
 
-```javascript
-function moveElement(element, final_x, final_y, interval) {
-	if (!document.getElementById) return false;
-	if (!document.getElementById(element)) return false;
-	var elem = document.getElementById(element);
-	//给elem增加一个属性来使每个元素在移动前都获得一个名为movement的属性来使img复位
-	if (elem.movement) {
-		clearTimeout(elem.movement);
-	}
-	//验证elem是否存在left和top属性，若没有该属性就直接赋值为初始值，此时可以将之前的赋值删去
-	if (!elem.style.left) elem.style.left = "0px";
-	if (!elem.style.top) elem.style.top = "0px";
- 	var xpos = parseInt(elem.style.left);
-	var ypos = parseInt(elem.style.top);
-	var dist = 0;
-	if (xpos == final_x && ypos == final_y) {
-		return true;
-	}
-	if (xpos < final_x) {
-		dist = Math.ceil((final_x - xpos)/10);
-		xpos += dist;
-	}
-	if (ypos < final_y) {
-		dist = Math.ceil((final_y - ypos)/10);
-		ypos += dist;
-	}
-	if (xpos > final_x) {
-		dist = Math.ceil((xpos - final_x)/10);
-		xpos-= dist;
-	}
-	if (ypos > final_y) {
-		dist = Math.ceil((ypos - final_y)/10)
-		ypos-=dist;
-	}
-	elem.style.left = xpos + "px";
-	elem.style.top = ypos + "px";
-	var repeat = function() {
-	moveElement(element, final_x, final_y, interval);
-	}
-	//第一次移动之后elem即可获得movement属性
-	elem.movement = setTimeout(repeat, interval);
-}
-```
+  ```javascript
+    function moveElement(element, final_x, final_y, interval) {
+	    if (!document.getElementById) return false;
+	    if (!document.getElementById(element)) return false;
+	    var elem = document.getElementById(element);
+	    //给elem增加一个属性来使每个元素在移动前都获得一个名为movement的属性来使img复位
+	    if (elem.movement) {
+		    clearTimeout(elem.movement);
+	    }
+	    //验证elem是否存在left和top属性，若没有该属性就直接赋值为初始值，此时可以将之前的赋值删去
+	    if (!elem.style.left) elem.style.left = "0px";
+	    if (!elem.style.top) elem.style.top = "0px";
+ 	    var xpos = parseInt(elem.style.left);
+	    var ypos = parseInt(elem.style.top);
+	    var dist = 0;
+	    if (xpos == final_x && ypos == final_y) {
+		    return true;
+	    }
+	    if (xpos < final_x) {
+		    dist = Math.ceil((final_x - xpos)/10);
+		    xpos += dist;
+	    }
+	    if (ypos < final_y) {
+		    dist = Math.ceil((final_y - ypos)/10);
+		    ypos += dist;
+	    }
+	    if (xpos > final_x) {
+		    dist = Math.ceil((xpos - final_x)/10);
+		    xpos-= dist;
+	    }
+	    if (ypos > final_y) {
+		    dist = Math.ceil((ypos - final_y)/10)
+		    ypos-=dist;
+	    }
+	    elem.style.left = xpos + "px";
+	    elem.style.top = ypos + "px";
+	    var repeat = function() {
+	    moveElement(element, final_x, final_y, interval);
+	    }
+	    //第一次移动之后elem即可获得movement属性
+	    elem.movement = setTimeout(repeat, interval);
+    }
+    ```
 
-在这里我做了三处改变，一个就是修复之前的问题，另一个关于改变移动速度，最后给移动元素检验了是否含有left和top属性。
+    在这里我做了三处改变，一个就是修复之前的问题，另一个关于改变移动速度，最后给移动元素检验了是否含有left和top属性。
 
 - 我们先继续谈一下第一个改变。示例代码里面可以看到给移动节点元素自定义了一个属性为**movement**，在首次调用**moveElement**函数时这个属性被创建，然后只要页面被载入，节点元素就一直存在于DOM文档树中，所以其属性可以当做全局变量来使用。然后在每次移动元素前都要确定元素是否含有**movement**属性，如果有就清除之前的移动操作再移动，没有的话就继续执行。这就保证了即使用户快速移动鼠标，实际执行的也只有一个**setTimeout**调用语句，不会出现累积事件也就不会再有之前的颤抖现象，更加符合直觉
 - 第二个改变是加了一个变量 *dist* 作为移动距离，大小为剩余距离的十分之一，这样每次移动的时候开始速度就会非常快然后渐渐平缓，给人的感觉是图片切换更加迅速，引用了**Math.ceil()**方法，除此之外还有**Math.floor()**，**Math.round()**等等，选用**Math.ceil()**向上取整可以保证元素可以尽快到达目的地，是数学领域的问题了，这里没有什么难理解的地方，想想就明白了，参考[Math.ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil)， [Math.floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor)， [Math.round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round)
@@ -173,7 +173,7 @@ elem.movement = setTimeout(function(){
 
 或者更加清楚明了的
 
-```javasctipy
+```javascript
 var repeat = function() {
 moveElement(element, final_x, final_y, interval);
 }

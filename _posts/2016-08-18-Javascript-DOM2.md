@@ -18,18 +18,18 @@ HTML中绝大多数属性在网页中是不显示的，少数可显示的属性�
 
 **1. 获取将要显示的属性节点**
 
-```JavaScript
+```javascript
 var abbreviations = document.getElementsByTagName("abbr");
 if (abbreviations.length == 0) return false;
 var defs = new Array();
 //遍历所有缩略词
 for (var i = 0; i < abbreviations.length; i++) {
-	var current_abbr = abbreviations[i]
-	//兼容低版本IE（IE6）
-	if (current_abbr.childNodes.length < 1) continue;
-	var definition = current_abbr.getAttribute("title");
-	var key = current_abbr.lastChild.nodeValue;
-	defs[key] = definition;
+    var current_abbr = abbreviations[i]
+    //兼容低版本IE（IE6）
+    if (current_abbr.childNodes.length < 1) continue;
+    var definition = current_abbr.getAttribute("title");
+    var key = current_abbr.lastChild.nodeValue;
+    defs[key] = definition;
 }
 ```
 

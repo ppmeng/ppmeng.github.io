@@ -32,42 +32,51 @@ github注册方法很多博客都有讲到，随便搜都可以找到很详细�
 
  1. 下载安装[ruby](https://www.ruby-lang.org/en/downloads/)
  2. 下载安装devkit，注意版本要和安装的ruby匹配，解压后假设解压后的文件夹名称为devkit，则在这个文件夹下（cd devkit）运行
-```
-ruby dk.rb init
-//运行结果
-Initialization complete! Please review and modify the auto-generated
-'config.yml' file to ensure it contains the root directories to all
-of the installed Rubies you want enhanced by the DevKit.
-```
-在ruby dk.rb init之后会发现提示让修改config.yml配置，打开该文件夹里面注释有提示，就是将ruby的安装位置模仿提示的格式写出来，注意前面的横线不能省略,我是直接安装在C盘下了，所以就写成下面的格式
-```
-- C:\Ruby22-x64 //发现一些博客里面会说这个路径需要写两次，其实是不需要的，格式正确就可以
-```
-然后继续在devkit下运行运行
-```
-ruby dk.rb install
-[INFO] Skipping existing gem override for 'C:/Ruby22-x64'
-[WARN] Skipping existing DevKit helper library for 'C:/Ruby22-x64'
-```
-发现有一个WARN，意思是在ruby的安装路径下有devkit helper library，于是我到ruby目录下，如（C:/Ruby22-x64\lib\ruby\site_ruby）将devkit.rb文件删除，然后重新执行ruby dk.rb install命令WARN不见了。（[参考链接](http://blog.csdn.net/chenleicpp/article/details/45147839)） （后来发现Ruby2.3.1没有WARN）
+   
+    ```
+    ruby dk.rb init
+    //运行结果
+    Initialization complete! Please review and modify the auto-generated 'config.yml' file to ensure it contains the root directories to all of the installed Rubies you want enhanced by the DevKit.
+    ```
+
+    在ruby dk.rb init之后会发现提示让修改config.yml配置，打开该文件夹里面注释有提示，就是将ruby的安装位置模仿提示的格式写出来，注意前面的横线不能省略,我是直接安装在C盘下了，所以就写成下面的格式
+
+    ```
+    - C:\Ruby22-x64 //发现一些博客里面会说这个路径需要写两次，其实是不需要的，格式正确就可以
+    ```
+
+    然后继续在devkit下运行运行
+    
+    ```
+    ruby dk.rb install
+    [INFO] Skipping existing gem override for 'C:/Ruby22-x64'
+    [WARN] Skipping existing DevKit helper library for 'C:/Ruby22-x64'
+    ```
+
+    发现有一个WARN，意思是在ruby的安装路径下有devkit helper library，于是我到ruby目录下，如（C:/Ruby22-x64\lib\ruby\site_ruby）将devkit.rb文件删除，然后重新执行ruby dk.rb install命令WARN不见了。（[参考链接](http://blog.csdn.net/chenleicpp/article/details/45147839)） （后来发现Ruby2.3.1没有WARN）
 
 ### 下载Jekyll
 
  1. 安装或者升级gem（在ruby dk.rb install运行之后INFO里面提示了已经安装好了gem，所以我直接运行gem update了一下看是否有更新的版本以及gem -v查看gem 版本，发现没有就继续了）
  2. gem默认的源有点慢，一般都推荐使用[淘宝RubyGems 镜像
 ](https://ruby.taobao.org/)的源，但是淘宝源不在维护了，所以会不稳定（https://ruby-china.org/topics/29250），故改用[Ruby China的 RubyGems 镜像](https://ruby-china.org/),有个问题是，在我添加Ruby China的gem源时，会出现错误
-```
-$ gem source -a https://gems.ruby-china.org
-Error fetching https://gems.ruby-china.org:SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (https://gems.ruby-china.org/specs.4.8.gz)
-```
 
-是SSL证书的问题嘛？然后我就改成了http，等了一会儿可以了。在https://github.com/ruby-china/rubygems-mirror/issues/5里面看到有人提出可以下载证书然后添加到ruby中
-下面是参考链接：
-链接1：https://github.com/ruby-china/rubygems-mirror/issues/5
-链接2：https://ruby-china.org/topics/24840
-我的解决办法：参考链接1中hantsy的办法，开始时我安装的ruby版本是2.2.5，结果发现依旧不能添加https的源，后来升级到2.3.1，发现可以了，这个办法比较简单，简单说就是运行gem which rubygems找到rubygems的位置，然后在rubygems文件夹下找到ssl-cert文件夹后在里面在手动添加一个文件夹gems.ruby-china.org，将下载下来的新的http://curl.haxx.se/ca/cacert.pem证书放在这个文件夹下就可以了。参考链接2，应该是证书失效所以手动添加一个新的证书
+    ```
+    $ gem source -a https://gems.ruby-china.org
+    Error fetching https://gems.ruby-china.org:SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (https://gems.ruby-china.org/specs.4.8.gz)
+    ```
+
+   是SSL证书的问题嘛？然后我就改成了http试了一下，等了一会儿可以了。在https://github.com/ruby-china/rubygems-mirror/issues/5里面看到有人提出可以下载证书然后添加到ruby中
+   下面是参考链接：
+
+   链接1：https://github.com/ruby-china/rubygems-mirror/issues/5
+
+   链接2：https://ruby-china.org/topics/24840
+
+   我的解决办法：参考链接1中hantsy的办法，开始时我安装的ruby版本是2.2.5，结果发现依旧不能添加https的源，后来升级到2.3.1，发现可以了，这个办法比较简单，简单说就是运行gem which rubygems找到rubygems的位置，然后在rubygems文件夹下找到ssl-cert文件夹后在里面在手动添加一个文件夹gems.ruby-china.org，将下载下来的新的http://curl.haxx.se/ca/cacert.pem证书放在这个文件夹下就可以了。参考链接2，应该是证书失效所以手动添加一个新的证书
 
 3. jekyll配置
+
 ```
 gem install jekyll // 安装jekyll
 gem install kramdown // markdown语言解析包
@@ -78,11 +87,12 @@ gem install wdm
 第一次搭建博客我个人觉得还是使用模板比较方便，[jekyllthemes](http://jekyllthemes.org/) 里面有很多，可以选择一个喜欢的使用，fork然后clone
 
 下面是我遇到的一些问题：
+
 ```
 问题1：
 $ jekyll serve
 Configuration file: C:/Users/wjl/mywork/jekyll/_config.yml
-  Dependency Error: Yikes! It looks like you don't have jekyll-paginate or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. The full error message from Ruby is: 'cannot load such file -- jekyll-paginate' If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/!
+Dependency Error: Yikes! It looks like you don't have jekyll-paginate or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. The full error message from Ruby is: 'cannot load such file -- jekyll-paginate' If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/!
 jekyll 3.2.1 | Error:  jekyll-paginate
 解决办法： gem install jekyll-paginate
 
