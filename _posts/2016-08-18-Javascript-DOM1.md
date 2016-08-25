@@ -8,7 +8,8 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 
 ## 初始图片库
 用无序列表`ul`来列出图片链接------点击查看[demo](http://codepen.io/ppmeng/pen/oxGmqN)
-```
+
+```html
 <!--所用到的初始html结构-->
 <body>
     <h1>萌妹子合集</h1>
