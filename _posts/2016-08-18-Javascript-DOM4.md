@@ -8,9 +8,10 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 ## [Modernizr](http://www.modernizr.com/)
 [Modernizr](https://modernizr.com/docs)是一个开源JavaScript库，用法和功能如下：
 
-- 在文档中嵌入Modernizr之后，他会随着页面加载改变一些标签的class属性，使用的时候要在<html>标签里面添加no-js的类，这样在浏览器不支持JS的时候就会应用css样式，
-- 还会自动检测浏览器可能支持的web技术，并添加相应类名（feature or no-feature）
-- 帮老旧浏览器处理HTML5的新元素而不用用户自己定义：关于使用：在[Modernizr](http://www.modernizr.com/)下载并在<head>中添加`<script src="文件本地地址></script>`以便在文档呈现之前传建好html5元素
+1.  在文档中嵌入Modernizr之后，他会随着页面加载改变一些标签的class属性，使用的时候要在<html>标签里面添加no-js的类，这样在浏览器不支持JS的时候就会应用css样式，
+2. 还会自动检测浏览器可能支持的web技术，并添加相应类名（feature or no-feature）
+3. 帮老旧浏览器处理HTML5的新元素而不用用户自己定义：关于使用：在[Modernizr](http://www.modernizr.com/)下载并在<head>中添加`<script src="文件本地地址></script>`以便在文档呈现之前传建好html5元素
+
 ## HTML5新元素
 点击查看[HTML5标签](http://www.w3school.com.cn/tags/index.asp)
 
@@ -20,6 +21,7 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 ```
 
 除了上面的，还有很多HTML5标签，下面从实例出发，了解下其中的canvas：
+
 ### 根据路径绘图~画一个小盒子
 
 首先，明确canvas本质就是一个画布，在python里面有类似的用法，所以我们先来熟悉一下用canvas标签来画一个简单的小方块------点击查看[demo](http://ppmeng.github.io/somedemo/HTML/11.html)
@@ -109,65 +111,27 @@ window.onload = function() {
  
 **关于getImageData的思考及尝试**
 
-- 关于使用getImageData()的时候因为画布被跨域的数据'污染'所以出错，这里是因为JavaScript处于安全的考虑不允许跨域调用其他页面的对象（这是个很大的坑，开发的时候会遇到很多跨域问题，以后得整理一下），所以 *getImageData* 只能操作和脚本处于同一个域中的图片（不允许操作非此域名外的图片资源，即使是子域也不行），但是我在本地编辑的时候，图片和脚本文件是保存在本地的同一个文件夹里面，参考[HTML Canvas, getImageData and Browser Security](http://blog.project-sierra.de/archives/1577)，可以知道本地文件是没有所谓的域，所以浏览器默认跨域，故出错，但是里面给出的解决办法让我不知所云，get不到点，测试也没有什么区别，只有Firefox浏览器才会出现切换效果，但是不加文章中给出的代码仅仅采用我给出的代码在Firefox下也是没有问题的；
-- 另一个找到的解决办法是[ 解决getImageData跨域问题](http://blog.csdn.net/molaifeng/article/details/42293509)，原理是[用php将图片编码嵌入html](http://blog.csdn.net/molaifeng/article/details/9617327)来解决跨域问题，不会php，测试无果（也有可能是我修改的有问题）
+1. 关于使用getImageData()的时候因为画布被跨域的数据'污染'所以出错，这里是因为JavaScript处于安全的考虑不允许跨域调用其他页面的对象（这是个很大的坑，开发的时候会遇到很多跨域问题，以后得整理一下），所以 *getImageData* 只能操作和脚本处于同一个域中的图片（不允许操作非此域名外的图片资源，即使是子域也不行），但是我在本地编辑的时候，图片和脚本文件是保存在本地的同一个文件夹里面，参考[HTML Canvas, getImageData and Browser Security](http://blog.project-sierra.de/archives/1577)，可以知道本地文件是没有所谓的域，所以浏览器默认跨域，故出错，但是里面给出的解决办法让我不知所云，get不到点，测试也没有什么区别，只有Firefox浏览器才会出现切换效果，但是不加文章中给出的代码仅仅采用我给出的代码在Firefox下也是没有问题的；
+2. 另一个找到的解决办法是[ 解决getImageData跨域问题](http://blog.csdn.net/molaifeng/article/details/42293509)，原理是[用php将图片编码嵌入html](http://blog.csdn.net/molaifeng/article/details/9617327)来解决跨域问题，不会php，测试无果（也有可能是我修改的有问题）
 
-```php
-<?php  
-$pic = 'http://avatar.csdn.net/7/5/0/1_molaifeng.jpg';  
-$arr = getimagesize($pic);  
-$pic = "data:{$arr['mime']};base64," . base64_encode(file_get_contents($pic));  
-?>  
-<img src="<?php echo $pic ?>" /> 
-```
-
-- 第三种找到的：[stackOverflow上提问一](http://stackoverflow.com/questions/26688168/uncaught-securityerror-failed-to-execute-getimagedata-on-canvasrenderingcont), [stackOverflow上提问二](http://stackoverflow.com/questions/22097747/getimagedata-error-the-canvas-has-been-tainted-by-cross-origin-data) 里面的回答和上面的有些类似，要么就是用php编码图片，要么就是用类似下面的代码修改图片的crossOrigin属性，但是根据[stackOverflow上提问二](http://stackoverflow.com/questions/22097747/getimagedata-error-the-canvas-has-been-tainted-by-cross-origin-data)回答一必须在服务器端也做一个修改，这对我来说并不适用
-
-```javascript
-var uimageObj = new Image();
-UimageObj.crossOrigin = 'anonymous';   // crossOrigin attribute has to be set before setting src.If reversed, it wont work.  
-UimageObj.src = obj_data.srcUser;
-```
-
-- 到最后我采取的办法是什么呢？？？其实只从原理上入手就可以了，就是把代码和图片放在一个文件夹里面上传到github的gh-pages分支，这样他们就在一个相同的域下就不会有跨域的问题了。《JavaScript DOM编程艺术》这本书中也提到“从图片之类的文件中读取数据时，不同的浏览器有不同的安全考虑，为了保证例子正常运行，必须在同一个站点提供图片和文档，而且，就算是在本地硬盘中使用file协议加载这个页面，例子也无法运行，虽然可以修改浏览器的安全设置，但是还是处于安全考虑还是建议把相关文件都上传到web服务器上”，也可以理解为什么Firefox浏览器并没有出现跨域bug了
-- 为了解决这个问题还看了一些别的资料，[CORS（CrossOrigin Resource Sharing）跨域资源共享](http://www.it165.net/pro/html/201412/29106.html), [Ajax跨域、Json跨域、Socket跨域和Canvas跨域等同源策略限制的解决方法](http://blog.csdn.net/freshlover/article/details/44223467#comments)，[如何捕获和分析 JavaScript Error](http://www.css88.com/archives/5014), 看看涨涨姿势就好了，不过不得不承认遇到问题去Stackflow比百度强多了
-- CSS解决办法：[使用CSS将图片转换成黑白(灰色、置灰](http://www.zhangxinxu.com/wordpress/2012/08/css-svg-filter-image-grayscale/), 然后在鼠标悬停和离开的时候切换设置不同的属性，，更快而且不用考虑跨域问题
-
-1. Now do this:
-   
-   ```ruby
-   def print_hi(name)
-     puts "Hi, #{name}"
-   end
-   print_hi('Tom')
-   #=> prints 'Hi, Tom' to STDOUT.
+   ```php
+   <?php  
+   $pic = 'http://avatar.csdn.net/7/5/0/1_molaifeng.jpg';  
+   $arr = getimagesize($pic);  
+   $pic = "data:{$arr['mime']};base64," . base64_encode(file_get_contents($pic));  
+   ?>  
+   <img src="<?php echo $pic ?>" /> 
    ```
 
-2. Nw do this:
-   
-   ```ruby
-   def print_hi(name)
-     puts "Hi, #{name}"
-   end
-   print_hi('Tom')
-   #=> prints 'Hi, Tom' to STDOUT.
+3. 第三种找到的：[stackOverflow上提问一](http://stackoverflow.com/questions/26688168/uncaught-securityerror-failed-to-execute-getimagedata-on-canvasrenderingcont), [stackOverflow上提问二](http://stackoverflow.com/questions/22097747/getimagedata-error-the-canvas-has-been-tainted-by-cross-origin-data) 里面的回答和上面的有些类似，要么就是用php编码图片，要么就是用类似下面的代码修改图片的crossOrigin属性，但是根据[stackOverflow上提问二](http://stackoverflow.com/questions/22097747/getimagedata-error-the-canvas-has-been-tainted-by-cross-origin-data)回答一必须在服务器端也做一个修改，这对我来说并不适用
+
+   ```javascript
+   var uimageObj = new Image();
+   UimageObj.crossOrigin = 'anonymous';   // crossOrigin attribute has to be set before setting src.If reversed, it wont work.  
+   UimageObj.src = obj_data.srcUser;
    ```
 
-- 1Now do this:
-   
-   ```ruby
-   def print_hi(name)
-     puts "Hi, #{name}"
-   end
-   print_hi('Tom')
-   #=> prints 'Hi, Tom' to STDOUT.
-   ```
-- Now do this:
-   
-   ```ruby
-   def print_hi(name)
-     puts "Hi, #{name}"
-   end
-   print_hi('Tom')
-   #=> prints 'Hi, Tom' to STDOUT.
-   ```
+4. 到最后我采取的办法是什么呢？？？其实只从原理上入手就可以了，就是把代码和图片放在一个文件夹里面上传到github的gh-pages分支，这样他们就在一个相同的域下就不会有跨域的问题了。《JavaScript DOM编程艺术》这本书中也提到“从图片之类的文件中读取数据时，不同的浏览器有不同的安全考虑，为了保证例子正常运行，必须在同一个站点提供图片和文档，而且，就算是在本地硬盘中使用file协议加载这个页面，例子也无法运行，虽然可以修改浏览器的安全设置，但是还是处于安全考虑还是建议把相关文件都上传到web服务器上”，也可以理解为什么Firefox浏览器并没有出现跨域bug了
+5. 为了解决这个问题还看了一些别的资料，[CORS（CrossOrigin Resource Sharing）跨域资源共享](http://www.it165.net/pro/html/201412/29106.html), [Ajax跨域、Json跨域、Socket跨域和Canvas跨域等同源策略限制的解决方法](http://blog.csdn.net/freshlover/article/details/44223467#comments)，[如何捕获和分析 JavaScript Error](http://www.css88.com/archives/5014), 看看涨涨姿势就好了，不过不得不承认遇到问题去Stackflow比百度强多了
+6. CSS解决办法：[使用CSS将图片转换成黑白(灰色、置灰](http://www.zhangxinxu.com/wordpress/2012/08/css-svg-filter-image-grayscale/), 然后在鼠标悬停和离开的时候切换设置不同的属性，，更快而且不用考虑跨域问题
+

@@ -85,11 +85,11 @@ function prepareSlideshow() {
 ### 改进版本
 因为鼠标移动过快造成颤抖所以可以确定一定是由于 **moveElement** 函数造成的，所以我们先来分析一下 **moveElement** 函数里面的构成。
 
--  **movuElement** 函数里面我们使用了 **setTimeout** 。然后里面我们递归调用 **moveElement** 函数来实现动画效果，这里我们有必要了解一下 **setTimeout** 函数的使用，参考[WindowTimers.setTimeout()](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout)和[setTimeout何时被调用执行
+1. **movuElement** 函数里面我们使用了 **setTimeout** 。然后里面我们递归调用 **moveElement** 函数来实现动画效果，这里我们有必要了解一下 **setTimeout** 函数的使用，参考[WindowTimers.setTimeout()](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout)和[setTimeout何时被调用执行
 ](http://www.cnblogs.com/dolphinX/archive/2013/04/05/2784933.html)来涨涨姿势，简单讲就是他是window的一个方法，可以直接使用，含两个参数，一个是重复调用的函数名，第二个参数是调用间隔时间
-- 首先我们要明确JavaScript是运行在单线程环境中的，意味着鼠标悬停的操作过快的时候，**setTimeout**会把调用的事件累计在队列里面等待执行，当我们一直移动鼠标的时候，等待的事件就会越来越多，然后在进程空闲的时候一件一件执行造成图片好像是在颤抖的现象，但是我们想要达到的效果是，当我们移动鼠标的时候，最后一件事件的优先级是要高于前面的事件的，具体在这个实例里面就是每次调用**moveElement**函数的时候可以先把之前的**moveElement**事件清除，由于调用的时候我们采用的是将**moveElement**包含在**setElement**函数里面的，所以可以想到使用**clearTimeout**来清除累积事件
-- 到这里我们应该就明白该将**setTimeout**用一个名字来标识，在下一次调用**moveElement**的时候先使用**clearTimeout**来清除之前移动事件。首先很容易理解这个名字不能使局部变量，因为若是局部变量的话意味着在**clearTimeout** 函数上下文中不存在，也就没有办法使清除操作进行；其次如果在函数外部定义一个全局变量来使用的话，就会出现一个问题，明明我们全部的操作都是在一个函数内部而不是很多函数都会使用，那么使用全局变量就有点大材小用。我们需要一个可以在**moveElement**函数内部当全局存在的局部变量，听起来好像是有点怪。。但这种变量我们一直都有使用，就是“属性”。
-- 使用自定义的属性来命名函数是作者想到的一个很独特的方法，给移动的元素传建一个独特的属性来标识函数，下面就是改进后的核心代码啦~对了，附赠一个小小的demo------[点击查看demo](http://ppmeng.github.io/somedemo/JavaScript/animation/changeimg/second/2.html )
+2. 首先我们要明确JavaScript是运行在单线程环境中的，意味着鼠标悬停的操作过快的时候，**setTimeout**会把调用的事件累计在队列里面等待执行，当我们一直移动鼠标的时候，等待的事件就会越来越多，然后在进程空闲的时候一件一件执行造成图片好像是在颤抖的现象，但是我们想要达到的效果是，当我们移动鼠标的时候，最后一件事件的优先级是要高于前面的事件的，具体在这个实例里面就是每次调用**moveElement**函数的时候可以先把之前的**moveElement**事件清除，由于调用的时候我们采用的是将**moveElement**包含在**setElement**函数里面的，所以可以想到使用**clearTimeout**来清除累积事件
+3. 到这里我们应该就明白该将**setTimeout**用一个名字来标识，在下一次调用**moveElement**的时候先使用**clearTimeout**来清除之前移动事件。首先很容易理解这个名字不能使局部变量，因为若是局部变量的话意味着在**clearTimeout** 函数上下文中不存在，也就没有办法使清除操作进行；其次如果在函数外部定义一个全局变量来使用的话，就会出现一个问题，明明我们全部的操作都是在一个函数内部而不是很多函数都会使用，那么使用全局变量就有点大材小用。我们需要一个可以在**moveElement**函数内部当全局存在的局部变量，听起来好像是有点怪。。但这种变量我们一直都有使用，就是“属性”。
+4. 使用自定义的属性来命名函数是作者想到的一个很独特的方法，给移动的元素传建一个独特的属性来标识函数，下面就是改进后的核心代码啦~对了，附赠一个小小的demo------[点击查看demo](http://ppmeng.github.io/somedemo/JavaScript/animation/changeimg/second/2.html )
 
 ```javascript
 function moveElement(element, final_x, final_y, interval) {
@@ -137,9 +137,9 @@ function moveElement(element, final_x, final_y, interval) {
 
 在这里我做了三处改变，一个就是修复之前的问题，另一个关于改变移动速度，最后给移动元素检验了是否含有left和top属性。
 
-- 我们先继续谈一下第一个改变。示例代码里面可以看到给移动节点元素自定义了一个属性为**movement**，在首次调用**moveElement**函数时这个属性被创建，然后只要页面被载入，节点元素就一直存在于DOM文档树中，所以其属性可以当做全局变量来使用。然后在每次移动元素前都要确定元素是否含有**movement**属性，如果有就清除之前的移动操作再移动，没有的话就继续执行。这就保证了即使用户快速移动鼠标，实际执行的也只有一个**setTimeout**调用语句，不会出现累积事件也就不会再有之前的颤抖现象，更加符合直觉
-- 第二个改变是加了一个变量 *dist* 作为移动距离，大小为剩余距离的十分之一，这样每次移动的时候开始速度就会非常快然后渐渐平缓，给人的感觉是图片切换更加迅速，引用了**Math.ceil()**方法，除此之外还有**Math.floor()**，**Math.round()**等等，选用**Math.ceil()**向上取整可以保证元素可以尽快到达目的地，是数学领域的问题了，这里没有什么难理解的地方，想想就明白了，参考[Math.ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil)， [Math.floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor)， [Math.round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round)
-- 第三个添加检验可以保证所有脚本在没有假设的前提下进行，保证即使一部分脚本丢失也不会出粗，直觉上可以直接使用if，若没有这些属性就结束运行，但是我采用的是若没有就赋值为初始值，这样就可以直接把之前元素属性赋值的地方把关于这两个属性的语句删去
+1. 我们先继续谈一下第一个改变。示例代码里面可以看到给移动节点元素自定义了一个属性为**movement**，在首次调用**moveElement**函数时这个属性被创建，然后只要页面被载入，节点元素就一直存在于DOM文档树中，所以其属性可以当做全局变量来使用。然后在每次移动元素前都要确定元素是否含有**movement**属性，如果有就清除之前的移动操作再移动，没有的话就继续执行。这就保证了即使用户快速移动鼠标，实际执行的也只有一个**setTimeout**调用语句，不会出现累积事件也就不会再有之前的颤抖现象，更加符合直觉
+2. 第二个改变是加了一个变量 *dist* 作为移动距离，大小为剩余距离的十分之一，这样每次移动的时候开始速度就会非常快然后渐渐平缓，给人的感觉是图片切换更加迅速，引用了**Math.ceil()**方法，除此之外还有**Math.floor()**，**Math.round()**等等，选用**Math.ceil()**向上取整可以保证元素可以尽快到达目的地，是数学领域的问题了，这里没有什么难理解的地方，想想就明白了，参考[Math.ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil)， [Math.floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor)， [Math.round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round)
+3. 第三个添加检验可以保证所有脚本在没有假设的前提下进行，保证即使一部分脚本丢失也不会出粗，直觉上可以直接使用if，若没有这些属性就结束运行，但是我采用的是若没有就赋值为初始值，这样就可以直接把之前元素属性赋值的地方把关于这两个属性的语句删去
 
 ### 最终版本
 开始时我偷懒在HTML结构里面创建了 *div* 和 *img* ，鉴于有一部分用户可能会吧JavaScript脚本屏蔽，那HTML里面加的元素就没有任何用处了，不如在脚本里面创建，点击查看这个最终版本的demo-----[最终版本](http://ppmeng.github.io/somedemo/JavaScript/animation/changeimg/final/index.html)
@@ -175,7 +175,7 @@ elem.movement = setTimeout(function(){
 
 ```javascript
 var repeat = function() {
-moveElement(element, final_x, final_y, interval);
+    moveElement(element, final_x, final_y, interval);
 }
 elem.movement = setTimeout(repeat, interval);
 ```

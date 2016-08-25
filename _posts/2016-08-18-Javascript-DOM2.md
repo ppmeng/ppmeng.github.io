@@ -16,26 +16,24 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 HTML中绝大多数属性在网页中是不显示的，少数可显示的属性（eg：title）在不同的浏览器里面显示的状态也不一样，假如没有JavaScript，属性的显示问题上面我们就只能屈服于浏览器，但是现在我们可以使用一些简单的DOM操作将属性显示问题掌握在自己手里，下面以具体实例(将HTML中所有缩写词显示在文档最后的列表中)来讲解如何将不可见的属性变为可见
 点击查看demo------[demo](http://codepen.io/ppmeng/pen/dMdMzQ)
 
-**1. 获取将要显示的属性节点**
+1. 获取将要显示的属性节点
 
-```javascript
-var abbreviations = document.getElementsByTagName("abbr");
-if (abbreviations.length == 0) return false;
-var defs = new Array();
-//遍历所有缩略词
-for (var i = 0; i < abbreviations.length; i++) {
-    var current_abbr = abbreviations[i]
-    //兼容低版本IE（IE6）
-    if (current_abbr.childNodes.length < 1) continue;
-    var definition = current_abbr.getAttribute("title");
-    var key = current_abbr.lastChild.nodeValue;
-    defs[key] = definition;
-}
-```
+    ```javascript
+    var abbreviations = document.getElementsByTagName("abbr");
+    if (abbreviations.length == 0) return false;
+    var defs = new Array();
+    //遍历所有缩略词
+    for (var i = 0; i < abbreviations.length; i++) {
+        var current_abbr = abbreviations[i]
+        //兼容低版本IE（IE6）
+        if (current_abbr.childNodes.length < 1) continue;
+        var definition = current_abbr.getAttribute("title");
+        var key = current_abbr.lastChild.nodeValue;
+        defs[key] = definition;
+    }
+    ```
 
-**2. 创建标记**
-
-其中创建定义标题和定义描述里面的文本节点时采用了两种不同的方法，一种是直接创建文本节点**createTextNode**再添加到元素节点，另一种直接使用**innerHTML**赋值,两种方法都可以，相对而言采用innerHTML代码量比较少
+2. 创建标记——其中创建定义标题和定义描述里面的文本节点时采用了两种不同的方法，一种是直接创建文本节点**createTextNode**再添加到元素节点，另一种直接使用**innerHTML**赋值,两种方法都可以，相对而言采用innerHTML代码量比较少
 
 ```javascript
 for (var key in defs) {
@@ -52,7 +50,7 @@ for (var key in defs) {
 }
 ```
 
-**3. 添加到指定位置**
+3. 添加到指定位置
 
 ```javascript
 //若dl没有子节点立即退出
