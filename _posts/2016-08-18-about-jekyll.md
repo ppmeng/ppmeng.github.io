@@ -4,6 +4,8 @@ categories: "jekyll"
 tags: ["jekyll", "github", "domain name"]
 ---
 
+{% include base_path %}
+{% include toc %}
 ## github Pages + 域名配置
 github注册方法很多博客都有讲到，随便搜都可以找到很详细的步骤，不再赘述，下面是经常会被看到的博客以及我觉得比较重要的部分：
 
@@ -60,11 +62,11 @@ github注册方法很多博客都有讲到，随便搜都可以找到很详细�
 1. 安装或者升级gem（在ruby dk.rb install运行之后INFO里面提示了已经安装好了gem，所以我直接运行gem update了一下看是否有更新的版本以及gem -v查看gem 版本，发现没有就继续了）
 2. gem默认的源有点慢，一般都推荐使用[淘宝RubyGems 镜像
 ](https://ruby.taobao.org/)的源，但是淘宝源不在维护了，所以会不稳定（https://ruby-china.org/topics/29250），故改用[Ruby China的 RubyGems 镜像](https://ruby-china.org/),有个问题是，在我添加Ruby China的gem源时，会出现错误
-
-    ```
-    $ gem source -a https://gems.ruby-china.org
-    Error fetching https://gems.ruby-china.org:SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (https://gems.ruby-china.org/specs.4.8.gz)
-    ```
+   
+   ```
+   $ gem source -a https://gems.ruby-china.org
+   Error fetching https://gems.ruby-china.org:SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (https://gems.ruby-china.org/specs.4.8.gz)
+   ```
 
     是SSL证书的问题嘛？然后我就改成了http试了一下，等了一会儿可以了。在https://github.com/ruby-china/rubygems-mirror/issues/5里面看到有人提出可以下载证书然后添加到ruby中
     下面是参考链接：
@@ -73,15 +75,15 @@ github注册方法很多博客都有讲到，随便搜都可以找到很详细�
     我的解决办法：参考链接1中hantsy的办法，开始时我安装的ruby版本是2.2.5，结果发现依旧不能添加https的源，后来升级到2.3.1，发现可以了，这个办法比较简单，简单说就是运行gem which rubygems找到rubygems的位置，然后在rubygems文件夹下找到ssl-cert文件夹后在里面在手动添加一个文件夹gems.ruby-china.org，将下载下来的新的http://curl.haxx.se/ca/cacert.pem证书放在这个文件夹下就可以了。参考链接2，应该是证书失效所以手动添加一个新的证书
 
 3. jekyll配置
-
-    ```
-    gem install jekyll // 安装jekyll
-    gem install kramdown // markdown语言解析包
-    gem install pygments.rb // 代码高亮包or gem install rouge---highlighter: rouge
-    gem install wdm
-    ```
-
-    第一次搭建博客我个人觉得还是使用模板比较方便，[jekyllthemes](http://jekyllthemes.org/) 里面有很多，可以选择一个喜欢的使用，fork然后clone
+   
+   ```
+   gem install jekyll // 安装jekyll
+   gem install kramdown // markdown语言解析包
+   gem install pygments.rb // 代码高亮包or gem install rouge---highlighter: rouge
+   gem install wdm
+   ```
+   
+   第一次搭建博客我个人觉得还是使用模板比较方便，[jekyllthemes](http://jekyllthemes.org/) 里面有很多，可以选择一个喜欢的使用，fork然后clone
 
 ### 下面是我遇到的一些问题：
 
