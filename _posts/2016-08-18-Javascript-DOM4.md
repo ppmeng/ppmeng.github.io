@@ -106,7 +106,9 @@ window.onload = function() {
 **关于像素遍历的理解**：
 
 - 对于第一个问题，我们要先了解**getImageData()**方法得到的数组形态，参考[w3school](http://www.w3school.com.cn/tags/canvas_getimagedata.asp)， [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData)， [知乎讨论](https://www.zhihu.com/question/39819798/answer/83252754)，附赠一个略深入的[关于getImageData()的性能问题](http://sphinx.oupeng.com/articles/the-stories-about-getimagedata-and-putimagedata)的讨论,　看过之后应该就理解了，*getImageData()* 方法返回 *imageData*　对象，这个对象拷贝了所有像素信息，包含四个方面：R - 红色 (0-255)，　G - 绿色 (0-255)，　B - 蓝色 (0-255)，　A - alpha 通道 (0-255; 0 是透明的，255 是完全可见的)，　很容易被迷惑的是，因为每个像素包含四个方面，直觉总会想着应该讲数据保存到四维数组里面，这样每个数组元素就包含一个像素的值，但是实际上，这个像素信息是包含在一维数组里面，所有的四个方面的值都一个一个分散在数组里面，也就是说数组里面的元素是这样的：像素一Ｒ，像素一Ｇ，像素一Ｂ，像素一Ａ，像素二Ｒ，像素二Ｇ，像素二Ｂ，像素二Ａ······，所以要按照像素遍历数组元素应该是每遍历数组四个元素找到一个像素位置，然后将每个像素的RGB相加后求平均数（将A忽略）再重新赋值；上面代码里面用了一个循环嵌套，嗯，原理如上，不再讲了
- **关于getImageData的思考及尝试**
+ 
+**关于getImageData的思考及尝试**
+
 - 关于使用getImageData()的时候因为画布被跨域的数据'污染'所以出错，这里是因为JavaScript处于安全的考虑不允许跨域调用其他页面的对象（这是个很大的坑，开发的时候会遇到很多跨域问题，以后得整理一下），所以 *getImageData* 只能操作和脚本处于同一个域中的图片（不允许操作非此域名外的图片资源，即使是子域也不行），但是我在本地编辑的时候，图片和脚本文件是保存在本地的同一个文件夹里面，参考[HTML Canvas, getImageData and Browser Security](http://blog.project-sierra.de/archives/1577)，可以知道本地文件是没有所谓的域，所以浏览器默认跨域，故出错，但是里面给出的解决办法让我不知所云，get不到点，测试也没有什么区别，只有Firefox浏览器才会出现切换效果，但是不加文章中给出的代码仅仅采用我给出的代码在Firefox下也是没有问题的；
 - 另一个找到的解决办法是[ 解决getImageData跨域问题](http://blog.csdn.net/molaifeng/article/details/42293509)，原理是[用php将图片编码嵌入html](http://blog.csdn.net/molaifeng/article/details/9617327)来解决跨域问题，不会php，测试无果（也有可能是我修改的有问题）
 
@@ -130,3 +132,42 @@ UimageObj.src = obj_data.srcUser;
 - 到最后我采取的办法是什么呢？？？其实只从原理上入手就可以了，就是把代码和图片放在一个文件夹里面上传到github的gh-pages分支，这样他们就在一个相同的域下就不会有跨域的问题了。《JavaScript DOM编程艺术》这本书中也提到“从图片之类的文件中读取数据时，不同的浏览器有不同的安全考虑，为了保证例子正常运行，必须在同一个站点提供图片和文档，而且，就算是在本地硬盘中使用file协议加载这个页面，例子也无法运行，虽然可以修改浏览器的安全设置，但是还是处于安全考虑还是建议把相关文件都上传到web服务器上”，也可以理解为什么Firefox浏览器并没有出现跨域bug了
 - 为了解决这个问题还看了一些别的资料，[CORS（CrossOrigin Resource Sharing）跨域资源共享](http://www.it165.net/pro/html/201412/29106.html), [Ajax跨域、Json跨域、Socket跨域和Canvas跨域等同源策略限制的解决方法](http://blog.csdn.net/freshlover/article/details/44223467#comments)，[如何捕获和分析 JavaScript Error](http://www.css88.com/archives/5014), 看看涨涨姿势就好了，不过不得不承认遇到问题去Stackflow比百度强多了
 - CSS解决办法：[使用CSS将图片转换成黑白(灰色、置灰](http://www.zhangxinxu.com/wordpress/2012/08/css-svg-filter-image-grayscale/), 然后在鼠标悬停和离开的时候切换设置不同的属性，，更快而且不用考虑跨域问题
+
+1. Now do this:
+   
+   ```ruby
+   def print_hi(name)
+     puts "Hi, #{name}"
+   end
+   print_hi('Tom')
+   #=> prints 'Hi, Tom' to STDOUT.
+   ```
+
+2. Nw do this:
+   
+   ```ruby
+   def print_hi(name)
+     puts "Hi, #{name}"
+   end
+   print_hi('Tom')
+   #=> prints 'Hi, Tom' to STDOUT.
+   ```
+
+- 1Now do this:
+   
+   ```ruby
+   def print_hi(name)
+     puts "Hi, #{name}"
+   end
+   print_hi('Tom')
+   #=> prints 'Hi, Tom' to STDOUT.
+   ```
+- Now do this:
+   
+   ```ruby
+   def print_hi(name)
+     puts "Hi, #{name}"
+   end
+   print_hi('Tom')
+   #=> prints 'Hi, Tom' to STDOUT.
+   ```
