@@ -12,4 +12,85 @@
 4. gem install bundler
 5. bundle install(避免因为本地github-pages引擎版本太旧或存在一些bug可以使用bundle update重置)
 
+## 文件说明
 
+1. .github文件夹里面的文件是有关提交issue时可以看到的一些提示（目前我还没做任何修改）
+2. _data
+   - navigation.yml 导航栏各个标题以及链接位置
+   - ui-text.yml 设置博客里面一些文字的显示（保留了英文，增加了中文）
+3. _includes
+   - analytics-providers ———— 提供网站分析支持
+     - custom.html
+     - google.html
+     - google-universal.html
+   - comments-providers ———— 提供评论支持
+     - custom.html
+     - discourse.html
+     - disqus.html
+     - facebook.html
+     - google-plus.html
+     - scripts.html
+     - staticman.html
+   - footer ———— 尾部，默认为footer.html， 可在此文件夹下自定义
+     - custom.html
+   - head ———— head部分, 默认为head.html，可在此文件夹下自定义
+     - custom.html
+   - analytics.html ———— 选择设置的网站分析代码嵌入
+   - archive-single.html
+   - author-profile.html ———— 博客作者部分
+   - base_path ———— url的生成
+   - breadcrumbs.html ———— 博客导航栏下方的面包屑导航
+   - browser-upgrade.html ———— IE9 以下显示网站升级提示
+   - category-list.html
+   - comment.html ———— 评论为staticman模板时，提交过的评论显示部分
+   - comments.html ———— 评论部分
+   - feature_row ———— feature row helper
+   - footer.html ———— custom snippets to add to site footer
+   - gallery ———— image gallery helper
+   - group-by-array ———— group by array helper for archives
+   - head.html ———— custom snippets to add to site head
+   - masthead.html ———— 导航部分
+   - nav-list ———— navigation list helper， 一系列文章时sidebar-left
+   - page-hero.html ———— 设置header的image后显示图片部分
+   - page__taxonomy.html ———— 页面分类
+   - paginator.html ———— 分页
+   - post_pagination.html ———— 前一页后一页
+   - read-time.html ———— 估计并显示阅读时间
+   - scripts.html ———— 
+   - seo.html ———— seo部分
+   - sidebar.html
+   - social-share.html
+   - tag-list.html
+   - toc ———— 页面文章部分快捷导航-sidebar-right
+4. _layouts
+   - archive.html
+   - archive-taxonomy.html
+   - compress.html
+   - default.html
+   - single.html
+   - splash.html
+5. _pages
+   - 404.md
+   - 导航栏各个页面内容
+6. _posts ———— 对应各个文章
+7. _sass 所有样式
+8. assets 博客设置layout后引用的样式（真实引用样式）
+   - css/main.scss ———— main stylesheet, loads SCSS partials from _sass
+   - fonts/fontawesome-webfont ———— Font Awesome webfonts
+   - js
+     - plugins     ————     jQuery plugins
+     - vendor      ————     vendor scripts
+     - _main.js    ————     plugin settings and other scripts to load after jQuery
+     - main.min.js ————     optimized and concatenated script file loaded before `</body>`
+9. images ———— image assets for posts/pages/collections/etc.
+10. .editorconfig ———— 简单讲就是使代码在不同的编译器中都有同样的缩进等样式，参考http://editorconfig.org/
+11. .gitattributes ———— https://git-scm.com/docs/gitattributes 和 https://git-scm.com/book/zh/v1/%E8%87%AA%E5%AE%9A%E4%B9%89-Git-Git%E5%B1%9E%E6%80%A7
+12. .gitignore ———— 不提交的文件
+13. CHANGELOG.md ———— 模板更新记录
+14. CNAME ———— 域名设置
+15. Gemfile 和 Gemfile.lock ———— gem file dependencies
+16. LICENSE ———— 版权声明
+17. README.md
+18. _config.yml ———— 设置文件
+19. index.html ———— 首页
+20. package.json ———— NPM build scripts

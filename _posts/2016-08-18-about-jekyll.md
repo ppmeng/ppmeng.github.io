@@ -3,10 +3,9 @@ title: "使用jekyll + github 搭建博客"
 categories: "jekyll"
 tags: ["jekyll", "github", "domain name"]
 ---
-
-{% include base_path %}
-{% include toc %}
+ 
 ## github Pages + 域名配置
+
 github注册方法很多博客都有讲到，随便搜都可以找到很详细的步骤，不再赘述，下面是经常会被看到的博客以及我觉得比较重要的部分：
 
 - [搭建一个免费的，无限流量的Blog----github Pages和Jekyll入门](http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html),这个是基于github pages搭建的静态博客，主要要点在于必须把文件上传到github的一个分支gh-pages上面，这样也可以，而且可以在不同的repo里面都使用这样的分支来生成可分享链接的页面，依附于其所属的项目。但是我使用的是直接创建一个ppmeng.github.io(ppmeng是我的github用户名，对的，repo name格式必须是username.github.io), [使用Github Pages建独立博客](http://beiyuu.com/github-pages)这篇博客User & Organization Pages部分讲解的比较细致可以参考一下

@@ -7,6 +7,7 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 初学JavaScript，最近看了一本备受推荐的书《JavaScript DOM 编程艺术》，书内容很简单但是编程思路很棒，主要讲的是基于DOM编程的思路和原则，强调使用 *JavaScript* 应从开始就规范自己的编程习惯，遵从平稳退化、渐进增强、以用户为中心的设计模式，下面以书中的例子（创建图片库）并基于这个理念来一步步完善代码。
 
 ## 初始图片库
+
 用无序列表`ul`来列出图片链接------点击查看[demo](http://codepen.io/ppmeng/pen/oxGmqN)
 
 ```html

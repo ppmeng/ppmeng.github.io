@@ -1,10 +1,10 @@
 # Site Settings
 locale                   : "zh-CN"
 title                    : "PPMENG BLOG"
-title_separator          : "-"
+title_separator          : "|"
 name                     : "王佳林"
 description              : "a Chinese blog website powered by Jekyll & Minimal Mistakes."
-url                      : "http://ppmenghome.com"
+url                      : "http://ppmenghome.com/"
 baseurl                  : 
 repository               : "ppmeng/ppmeng.github.io"
 teaser                   : "bg-img.png"
@@ -104,7 +104,7 @@ defaults:
       comments: true
       share: true
       related: true
-
+ 
   # _pages
   - scope:
       path: ""
