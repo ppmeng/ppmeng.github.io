@@ -21,7 +21,6 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 </body>
 ```
 
-
 ### 已达到成果
 
 点击链接可转到图片
@@ -32,6 +31,7 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 
 ## 增加占位符图片
 鉴于初始图片库的缺点做以下改进------点击查看[demo](http://codepen.io/ppmeng/pen/GZMzbm)
+
 ```
 <!--html部分 在ul后面增加img作为显示图片的位置并在将onclick事件嵌入每个<a>里面-->
 <img src="" id="placeholder" alt="">
@@ -43,6 +43,7 @@ function showPic(whichpic) {
     placeholder.setAttribute("src", source);
 }
 ```
+
 ### 改进部分
 1. 增加占位符 `img` 来作为封面以及接下来显示图片的位置
 2. 点击链接时阻止网页默认行为（跳转到图片查看页面）
@@ -59,12 +60,14 @@ function showPic(whichpic) {
 
 ## 添加文本切换以及CSS样式
 点击查看这个版本的[demo](http://codepen.io/ppmeng/pen/reGbVM)
+
 ```
 //JavaScript增加部分---实现文本切换
 var description = document.getElementById("description");
 var text = whichpic.getAttribute("title");
 description.firstChild.nodeValue = text;
 ```
+
 ### 改进部分
 1. 增加对图片的描述并实现点击链接后图片进行切换
 2. 增加一些简单的样式使页面更协调
@@ -81,6 +84,7 @@ description.firstChild.nodeValue = text;
 ## 分离JavaScript并实现向后兼容
 
 点击查看这个版本的[demo](http://codepen.io/ppmeng/pen/yOzWOP)
+
 ```
 //JavaScript添加部分
 function prepareGallery() {
@@ -98,6 +102,7 @@ function prepareGallery() {
 }
 window.onload = prepareGallery;
 ```
+
 ### 改进部分
 1. 将网页结构和JavaScript脚本分离开
 2. 新函数实现向后兼容，确保老浏览器不会出错
@@ -114,6 +119,7 @@ window.onload = prepareGallery;
 
 ## 不做假设，全部检测，结构和行为分开
 点击查看这次的[demo](http://codepen.io/ppmeng/pen/zqEVKY)
+
 ```
 //JavaScript增加部分
 function preparePlaceholder() {
@@ -145,6 +151,7 @@ function insertAfter(newElement, targetElement) {
 }
 addLoadEvent(preparePlaceholder);
 ```
+
 ### 改进部分
 1. 原始的HTML文件中占位符的存在仅仅是为了给 *showPic* 函数提供属性，故将其直接在JavaScript实现，和HTML结构分开
 2. 对showPic所使用的DOM方法进行检测
