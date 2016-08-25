@@ -34,11 +34,10 @@ github注册方法很多博客都有讲到，随便搜都可以找到很详细�
  2. 下载安装devkit，注意版本要和安装的ruby匹配，解压后假设解压后的文件夹名称为devkit，则在这个文件夹下（cd devkit）运行
 ```
 ruby dk.rb init
-
+//运行结果
 Initialization complete! Please review and modify the auto-generated
 'config.yml' file to ensure it contains the root directories to all
 of the installed Rubies you want enhanced by the DevKit.
-
 ```
 在ruby dk.rb init之后会发现提示让修改config.yml配置，打开该文件夹里面注释有提示，就是将ruby的安装位置模仿提示的格式写出来，注意前面的横线不能省略,我是直接安装在C盘下了，所以就写成下面的格式
 ```
@@ -47,7 +46,6 @@ of the installed Rubies you want enhanced by the DevKit.
 然后继续在devkit下运行运行
 ```
 ruby dk.rb install
-
 [INFO] Skipping existing gem override for 'C:/Ruby22-x64'
 [WARN] Skipping existing DevKit helper library for 'C:/Ruby22-x64'
 ```
@@ -61,13 +59,14 @@ ruby dk.rb install
 ```
 $ gem source -a https://gems.ruby-china.org
 Error fetching https://gems.ruby-china.org:SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (https://gems.ruby-china.org/specs.4.8.gz)
-
 ```
+
 是SSL证书的问题嘛？然后我就改成了http，等了一会儿可以了。在https://github.com/ruby-china/rubygems-mirror/issues/5里面看到有人提出可以下载证书然后添加到ruby中
-下面是参考链接：:
+下面是参考链接：
 链接1：https://github.com/ruby-china/rubygems-mirror/issues/5
 链接2：https://ruby-china.org/topics/24840
 我的解决办法：参考链接1中hantsy的办法，开始时我安装的ruby版本是2.2.5，结果发现依旧不能添加https的源，后来升级到2.3.1，发现可以了，这个办法比较简单，简单说就是运行gem which rubygems找到rubygems的位置，然后在rubygems文件夹下找到ssl-cert文件夹后在里面在手动添加一个文件夹gems.ruby-china.org，将下载下来的新的http://curl.haxx.se/ca/cacert.pem证书放在这个文件夹下就可以了。参考链接2，应该是证书失效所以手动添加一个新的证书
+
 3. jekyll配置
 ```
 gem install jekyll // 安装jekyll
@@ -75,6 +74,7 @@ gem install kramdown // markdown语言解析包
 gem install pygments.rb // 代码高亮包or gem install rouge---highlighter: rouge
 gem install wdm
 ```
+
 第一次搭建博客我个人觉得还是使用模板比较方便，[jekyllthemes](http://jekyllthemes.org/) 里面有很多，可以选择一个喜欢的使用，fork然后clone
 
 下面是我遇到的一些问题：
@@ -104,8 +104,6 @@ Please add the following to your Gemfile to avoid polling for changes:
  Liquid Warning: Liquid syntax error (line 21): Expected id but found number in "{{ site.404-img }}" in /Users/wjl/mywork/jekyll/_layouts/error.html
 这个应该是我这个模板的个例，不影响网站的显示但是看着warning也不爽
 解决办法:将_config.yml里面的404-img改为404_img, 然后把{{ site.404-img }}改为“{{site.404_img}}”
-
-
 ```
 
 也许会遇到的问题
