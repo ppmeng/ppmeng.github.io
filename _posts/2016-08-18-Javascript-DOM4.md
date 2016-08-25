@@ -11,14 +11,16 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 - 在文档中嵌入Modernizr之后，他会随着页面加载改变一些标签的class属性，使用的时候要在<html>标签里面添加no-js的类，这样在浏览器不支持JS的时候就会应用css样式，
 - 还会自动检测浏览器可能支持的web技术，并添加相应类名（feature or no-feature）
 - 帮老旧浏览器处理HTML5的新元素而不用用户自己定义：关于使用：在[Modernizr](http://www.modernizr.com/)下载并在<head>中添加`<script src="文件本地地址></script>`以便在文档呈现之前传建好html5元素
-##HTML5新元素
+## HTML5新元素
 点击查看[HTML5标签](http://www.w3school.com.cn/tags/index.asp)
 ```
 更加语义化的标签(Internet Explorer 9+, Firefox, Opera, Chrome 以及 Safari 支持以下标签)：
 <artical>, <aside>, <footer>, <header>, <section>, <nav>, <source>, <time>, <figcaption>, <figure>, <mark>, <embed>, <progress>
 ```
 除了上面的，还有很多HTML5标签，下面从实例出发，了解下其中的canvas：
-**根据路径绘图~画一个小盒子**
+
+### 根据路径绘图~画一个小盒子
+
 首先，明确canvas本质就是一个画布，在python里面有类似的用法，所以我们先来熟悉一下用canvas标签来画一个简单的小方块------点击查看[demo](http://ppmeng.github.io/somedemo/HTML/11.html)
 核心代码如下：
 ```
@@ -47,7 +49,7 @@ function draw() {
 ```
 原理很简单，canvas是一块有着横纵坐标的画布，左上角为原点，越往右x越大，越往下y越大，变量ctx引用的是画布的绘图空间（二维），简单的根据矢量作图就是在一个二维平面上面确定几个点，连线作为绘图经过的路径，这里中间对绘图结果做了一个边角的处理，可以参考[三次贝塞尔曲线是什么](http://www.w3school.com.cn/tags/canvas_beziercurveto.asp)，  [用js计算三次贝塞尔曲线](http://bbs.9ria.com/thread-71296-1-1.html)
 
-**根据位图绘图~处理灰度图片**
+### 根据位图绘图~处理灰度图片
 这个例子是将一个彩色图片用canvas处理成灰度版，并用 *onmouseover* 以及 *onmouseout* 来进行彩色版和灰度版本的切换，点击查看demo------[demo](http://ppmeng.github.io/somedemo/HTML/11-2.html);
 核心代码如下：
 ```

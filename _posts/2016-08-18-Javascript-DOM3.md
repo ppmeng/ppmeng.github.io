@@ -6,7 +6,7 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 
 
 前面提到了使用JavaScript来修改文档的样式信息，但是随着浏览器的的不断升级更新，CSS的兼容性以及功能也越来越强大，所以总的来说使用CSS来改变样式依旧是最佳的选择，但是要想达到随着时间的变化而不断改变元素样式的话，CSS就没有办法了，而JavaScript可以很完美的实现，其中动画就是随着时间不断改变样式（元素位置）的例子之一
-##简单动画之定时改变元素位置
+## 简单动画之定时改变元素位置
 点击查看一个甜蜜的demo------[demo](http://ppmeng.github.io/somedemo/JavaScript/animation/kiss/kiss.html)
 这个小动画就是按照随着时间不断改变元素位置的思想完成的，脚本很简单，具体代码查看demo，下面是核心代码：
 ```
@@ -30,7 +30,7 @@ function moveElement(element, final_x, final_y, interval) {
 //由于style只能返回内嵌样式，所以只能采用DOM初始化元素位置并调用moveElement()函数
 function positionmessage() {}
 ```
-##实用的动画
+## 实用的动画
 现如今，不光是JavaScript还有很多CSS3的属性可以做出来动画的效果，但是动画元素过多不仅容易引起用户的不满，而且会导致出现一些可访问性的问题，作者引用了W3C里面:
 >- 除非浏览器允许用户“冻结”移动的内容，否则就应该避免让内容在页面中移动。如果页面上有移动的内容，就应该使用脚本或者插件的机制允许用户冻结这种移动或者动态更新行为
 
@@ -46,7 +46,7 @@ function positionmessage() {}
 </ol>
 ```
 
-###初始版本
+### 初始版本
 回想一下之前做过的DOM练习，发现这个和构建图片库很相似，好像只需要把点击操作换**onmouseover**,仿照之前的例子来实现的话首先需要建立一个占位符，可以采取之间在 *ol* 之后添加一个图片的标签或者在脚本里面创造标签，基于分离的思想当然后者更好，但是首先我们要让程序先跑起来嘛~~~所以，偷懒使用第一种~来看我的demo------[demo](http://codepen.io/ppmeng/pen/mPXWeB)
 核心代码如下：
 ```
@@ -72,11 +72,12 @@ function prepareSlideshow() {
 }
 ```
 乍一看好像还不错，至少当我鼠标扫过每个链接的时候图片在切换，这里需要注意的是：
+
 1. 如果每个链接对应不同的图片的时候，图片在加载的时候即使是高速网络也不免得有延迟。为避免在切换不同的图片的时候出现延迟而使得动画不够流畅，首先使用photoshop将图片拼接到一起在使用，其次为了可以分别显示每个图片则可以再img外围加一个div并设置其宽高，然后设置其溢出表现 **overflow：hidden；**，每个图片的位置则采用绝对定位的方法将图片移动并显示
 2. 获取每一个 **li**，然后在图片上面确定扫过每个 **li** 之后图片的位置；为达到动画效果采用 **moveElement** 函数
 嗯，还不错，可是当我扫了几下链接之后，发现图片在颤抖。。这是为什么呢？
 
-###改进版本
+### 改进版本
 因为鼠标移动过快造成颤抖所以可以确定一定是由于 **moveElement** 函数造成的，所以我们先来分析一下 **moveElement** 函数里面的构成。
 
 -  **movuElement** 函数里面我们使用了 **setTimeout** 。然后里面我们递归调用 **moveElement** 函数来实现动画效果，这里我们有必要了解一下 **setTimeout** 函数的使用，参考[WindowTimers.setTimeout()](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout)和[setTimeout何时被调用执行
@@ -134,7 +135,7 @@ function moveElement(element, final_x, final_y, interval) {
 - 第二个改变是加了一个变量 *dist* 作为移动距离，大小为剩余距离的十分之一，这样每次移动的时候开始速度就会非常快然后渐渐平缓，给人的感觉是图片切换更加迅速，引用了**Math.ceil()**方法，除此之外还有**Math.floor()**，**Math.round()**等等，选用**Math.ceil()**向上取整可以保证元素可以尽快到达目的地，是数学领域的问题了，这里没有什么难理解的地方，想想就明白了，参考[Math.ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil)， [Math.floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor)， [Math.round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round)
 - 第三个添加检验可以保证所有脚本在没有假设的前提下进行，保证即使一部分脚本丢失也不会出粗，直觉上可以直接使用if，若没有这些属性就结束运行，但是我采用的是若没有就赋值为初始值，这样就可以直接把之前元素属性赋值的地方把关于这两个属性的语句删去
 
-###最终版本
+### 最终版本
 开始时我偷懒在HTML结构里面创建了 *div* 和 *img* ，鉴于有一部分用户可能会吧JavaScript脚本屏蔽，那HTML里面加的元素就没有任何用处了，不如在脚本里面创建，点击查看这个最终版本的demo-----[最终版本](http://ppmeng.github.io/somedemo/JavaScript/animation/changeimg/final/index.html)
 核心代码如下：
 ```
@@ -151,7 +152,7 @@ var linklist = document.getElementById("linklist");
 insertAfter(divelem, linklist);
 ```
 insertAfter函数之前已经[第一篇](http://www.cnblogs.com/ppmeng/p/5369135.html)最后一部分讲到过，其余的就是DOM的核心方法了，可以把移动元素的其他CSS属性放置在外部CSS文件里面，这样每一部分的用处更加明显
-##总结
+## 总结
 编者语：实现动画效果并不难，难在在实践中该不该使用动画。同样，写代码并不难，难在写出大家都看得懂的代码。
 书中使用了这样一条语句：
 `var repeat = "moveElement('"+elementID+", "+final_x+", "+final_y+", "+interval+"')"`,怎么说呢，括号里面是在拼接字符串，又是单引号又是双引号的很容易出错，而且还有很多人不理解，参考[提问](http://bbs.csdn.net/topics/391905753?page=1)，可以改写成
