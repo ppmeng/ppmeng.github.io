@@ -16,7 +16,8 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 HTML中绝大多数属性在网页中是不显示的，少数可显示的属性（eg：title）在不同的浏览器里面显示的状态也不一样，假如没有JavaScript，属性的显示问题上面我们就只能屈服于浏览器，但是现在我们可以使用一些简单的DOM操作将属性显示问题掌握在自己手里，下面以具体实例(将HTML中所有缩写词显示在文档最后的列表中)来讲解如何将不可见的属性变为可见
 点击查看demo------[demo](http://codepen.io/ppmeng/pen/dMdMzQ)
 
-**1：获取将要显示的属性节点**
+**1. 获取将要显示的属性节点**
+
 ```JavaScript
 var abbreviations = document.getElementsByTagName("abbr");
 if (abbreviations.length == 0) return false;
@@ -31,12 +32,14 @@ for (var i = 0; i < abbreviations.length; i++) {
 	defs[key] = definition;
 }
 ```
-**2：创建标记**
+
+**2. 创建标记**
 
 其中创建定义标题和定义描述里面的文本节点时采用了两种不同的方法，一种是直接创建文本节点**createTextNode**再添加到元素节点，另一种直接使用**innerHTML**赋值,两种方法都可以，相对而言采用innerHTML代码量比较少
-```
-for (key in defs) {
-	//创建定义标题
+
+```javascript
+for (var key in defs) {
+    //创建定义标题
 	var dtitle = document.createElement("dt");
 	var dtitle_text = document.createTextNode(key);
     dtitle.appendChild(dtitle_text);
@@ -48,8 +51,10 @@ for (key in defs) {
 	dlist.appendChild(ddesc);
 }
 ```
-**3: 添加到指定位置**
-```
+
+**3. 添加到指定位置**
+
+```javascript
 //若dl没有子节点立即退出
 if (dlist.childNodes.length < 1) return false;
 //创建定义列表标题
@@ -60,12 +65,14 @@ abbrheader.appendChild(header_text);
 document.body.appendChild(abbrheader);
 document.body.appendChild(dlist);
 ```
+
 ### 响应用户的操作增加内容
 点击查看这个部分的demo------[demo](http://ppmeng.github.io/baidu.IFE2016/task2/task2-4/task2-4.html),
 示例采用[百度前端技术学院任务十六](http://ife.baidu.com/task/detail?taskId=16)，简单讲就是把用户输入的文本采用表格的形式添加到文档body之后，并且要完成一些验证以及添加删除按钮，验证部分采用正则仔细分析发现，这个部分和前面例子大同小异，都是要先获取节点，然后创建标记，最后添加至指定位置，所以不再赘述，接下来主要讲一下如何在用户点击表格列中的“删除”按钮之后，删掉那一行的数据
-```
+
+```javascript
 function delBtnHandle(button) {
-	var clicktr = button.parentNode.parentNode;
+    var clicktr = button.parentNode.parentNode;
     var city = clicktr.childNodes[0].innerHTML;
     delete aqiData[city];
     renderAqiList();
@@ -76,6 +83,7 @@ aqi_table.addEventListener("click", function(event) {
     }
 })
 ```
+
 要添加删除操作，首先要找到删除按钮所在的行（`clicktr = button.parentNode.parentNode;`），接着找到第一个td对应的innerHTML即aqiData对应的数组下标并删除，最后调用 *renderAqiList()* 函数重绘表格
 删除操作完成后，需要绑定按钮和函数，这里采用*addEventListener*，参考[addEventListener](http://www.runoob.com/jsref/met-element-addeventlistener.html),按要求使用并实现兼容
 
@@ -85,7 +93,8 @@ aqi_table.addEventListener("click", function(event) {
 ### 根据元素在节点树里面的位置设置样式
 CSS2里面有：first-child等，CSS3引入有：nth-of-type()之类的位置选择器，相较之前来说根据位置设置样式已经简单很多了，但是对于CSS3，还是有很多属性浏览器并不支持，鉴于CSS还无法根据元素之间的相对位置找出某个特定的元素（例如设置指定标记的下一个元素节点样式），但是DOM在这方面非常简单，因此我们还是需要掌握使用DOM来设置样式
 点击查看------[demo](http://codepen.io/ppmeng/pen/BKYLVv)
-```
+
+```javascript
 function styleHeaderSiblings(node) {
     if (!document.getElementsByTagName) return false;
     var elemlist = document.getElementsByTagName(node);
@@ -102,13 +111,15 @@ function getNextElement(node) {
 }
 //addLoadEvent(styleHeaderSiblings("h1"));调用addLoadEvent函数改变每个h1标签后面的第一个兄弟节点样式
 ```
+
 ### 根据某种条件反复设置某种样式
 以表格不同行切换颜色实现斑马线效果为例，点击查看demo------[demo](http://codepen.io/ppmeng/pen/xVYEJq)
 
 [demo](http://codepen.io/ppmeng/pen/xVYEJq)里面我采用的是获取所有的table里面的tr，设置一个布尔变量odd，从第一个tr开始，若该tr对应着的odd为true，则使用类odd里面所示的样式，然后将odd值设为false，以此类推，当odd为false时，不改变样式仅仅将odd设为true，随着odd值交替改变即可达到交替改变tr样式的目的
 
 除了可以分别设置奇数行和偶数行样式的办法可以实现斑马线效果之外（工作量大且不易修改），我们还可以使用CSS3的nth-child选择器来达到一致的效果并且所需代码量极少（如果不考虑IE8以及更早版本的话这个就是最优的方法了~），如下所示：
-```
+
+```css
 tr:nth-child(odd) {
 	background: #ffc;
 }

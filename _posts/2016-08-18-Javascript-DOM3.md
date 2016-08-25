@@ -9,7 +9,8 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 ## 简单动画之定时改变元素位置
 点击查看一个甜蜜的demo------[demo](http://ppmeng.github.io/somedemo/JavaScript/animation/kiss/kiss.html)
 这个小动画就是按照随着时间不断改变元素位置的思想完成的，脚本很简单，具体代码查看demo，下面是核心代码：
-```
+
+```javascript
 //采用绝对定位以及setTimeout来定时改变元素位置
 function moveElement(element, final_x, final_y, interval) {
 	var elem = document.getElementById(element);
@@ -30,6 +31,7 @@ function moveElement(element, final_x, final_y, interval) {
 //由于style只能返回内嵌样式，所以只能采用DOM初始化元素位置并调用moveElement()函数
 function positionmessage() {}
 ```
+
 ## 实用的动画
 现如今，不光是JavaScript还有很多CSS3的属性可以做出来动画的效果，但是动画元素过多不仅容易引起用户的不满，而且会导致出现一些可访问性的问题，作者引用了W3C里面:
 >- 除非浏览器允许用户“冻结”移动的内容，否则就应该避免让内容在页面中移动。如果页面上有移动的内容，就应该使用脚本或者插件的机制允许用户冻结这种移动或者动态更新行为
@@ -37,7 +39,8 @@ function positionmessage() {}
 也就是说我们应该只在必须使用动画的时候或者用户可以自己控制动画的时候使用动画。
 下面采用的实例是一个比较常见比较有用的动画，经常会在一些电商网站，类似taobao，JD之类的看到，效果类似首页中间的大广告一直在不停的切换，或者鼠标放上去就可以切换图片，这时就应该选择JavaScript脚本来实现动画。这里我们采用的实例是在一个包含链接的网页上面，实现用户鼠标扫过链接时预览链接对应的图片
 首先我们需要完成大致的html结构，包含一个标题一个简短的段落以及一个有3个列表项的有序列表，非常简单的结构
-```
+
+```html
 <h1></h1>
 <p></p>
 <ol>
@@ -49,7 +52,8 @@ function positionmessage() {}
 ### 初始版本
 回想一下之前做过的DOM练习，发现这个和构建图片库很相似，好像只需要把点击操作换**onmouseover**,仿照之前的例子来实现的话首先需要建立一个占位符，可以采取之间在 *ol* 之后添加一个图片的标签或者在脚本里面创造标签，基于分离的思想当然后者更好，但是首先我们要让程序先跑起来嘛~~~所以，偷懒使用第一种~来看我的demo------[demo](http://codepen.io/ppmeng/pen/mPXWeB)
 核心代码如下：
-```
+
+```javascript
 function prepareSlideshow() {
 	//为图片应用样式以便后期使用
 	var preview = document.getElementById("preview");
@@ -71,6 +75,7 @@ function prepareSlideshow() {
 	}
 }
 ```
+
 乍一看好像还不错，至少当我鼠标扫过每个链接的时候图片在切换，这里需要注意的是：
 
 1. 如果每个链接对应不同的图片的时候，图片在加载的时候即使是高速网络也不免得有延迟。为避免在切换不同的图片的时候出现延迟而使得动画不够流畅，首先使用photoshop将图片拼接到一起在使用，其次为了可以分别显示每个图片则可以再img外围加一个div并设置其宽高，然后设置其溢出表现 **overflow：hidden；**，每个图片的位置则采用绝对定位的方法将图片移动并显示
@@ -86,7 +91,7 @@ function prepareSlideshow() {
 - 到这里我们应该就明白该将**setTimeout**用一个名字来标识，在下一次调用**moveElement**的时候先使用**clearTimeout**来清除之前移动事件。首先很容易理解这个名字不能使局部变量，因为若是局部变量的话意味着在**clearTimeout** 函数上下文中不存在，也就没有办法使清除操作进行；其次如果在函数外部定义一个全局变量来使用的话，就会出现一个问题，明明我们全部的操作都是在一个函数内部而不是很多函数都会使用，那么使用全局变量就有点大材小用。我们需要一个可以在**moveElement**函数内部当全局存在的局部变量，听起来好像是有点怪。。但这种变量我们一直都有使用，就是“属性”。
 - 使用自定义的属性来命名函数是作者想到的一个很独特的方法，给移动的元素传建一个独特的属性来标识函数，下面就是改进后的核心代码啦~对了，附赠一个小小的demo------[点击查看demo](http://ppmeng.github.io/somedemo/JavaScript/animation/changeimg/second/2.html )
 
-```
+```javascript
 function moveElement(element, final_x, final_y, interval) {
 	if (!document.getElementById) return false;
 	if (!document.getElementById(element)) return false;
@@ -129,6 +134,7 @@ function moveElement(element, final_x, final_y, interval) {
 	elem.movement = setTimeout(repeat, interval);
 }
 ```
+
 在这里我做了三处改变，一个就是修复之前的问题，另一个关于改变移动速度，最后给移动元素检验了是否含有left和top属性。
 
 - 我们先继续谈一下第一个改变。示例代码里面可以看到给移动节点元素自定义了一个属性为**movement**，在首次调用**moveElement**函数时这个属性被创建，然后只要页面被载入，节点元素就一直存在于DOM文档树中，所以其属性可以当做全局变量来使用。然后在每次移动元素前都要确定元素是否含有**movement**属性，如果有就清除之前的移动操作再移动，没有的话就继续执行。这就保证了即使用户快速移动鼠标，实际执行的也只有一个**setTimeout**调用语句，不会出现累积事件也就不会再有之前的颤抖现象，更加符合直觉
@@ -138,7 +144,8 @@ function moveElement(element, final_x, final_y, interval) {
 ### 最终版本
 开始时我偷懒在HTML结构里面创建了 *div* 和 *img* ，鉴于有一部分用户可能会吧JavaScript脚本屏蔽，那HTML里面加的元素就没有任何用处了，不如在脚本里面创建，点击查看这个最终版本的demo-----[最终版本](http://ppmeng.github.io/somedemo/JavaScript/animation/changeimg/final/index.html)
 核心代码如下：
-```
+
+```javascript
 var imgelem = document.createElement("img");
 imgelem.setAttribute("id", "preview");
 imgelem.setAttribute("src", "../img/donghua.png");
@@ -151,21 +158,26 @@ divelem.appendChild(imgelem);
 var linklist = document.getElementById("linklist");
 insertAfter(divelem, linklist);
 ```
+
 insertAfter函数之前已经[第一篇](http://www.cnblogs.com/ppmeng/p/5369135.html)最后一部分讲到过，其余的就是DOM的核心方法了，可以把移动元素的其他CSS属性放置在外部CSS文件里面，这样每一部分的用处更加明显
 ## 总结
 编者语：实现动画效果并不难，难在在实践中该不该使用动画。同样，写代码并不难，难在写出大家都看得懂的代码。
 书中使用了这样一条语句：
 `var repeat = "moveElement('"+elementID+", "+final_x+", "+final_y+", "+interval+"')"`,怎么说呢，括号里面是在拼接字符串，又是单引号又是双引号的很容易出错，而且还有很多人不理解，参考[提问](http://bbs.csdn.net/topics/391905753?page=1)，可以改写成
-```
+
+```javascript
 elem.movement = setTimeout(function(){
     moveElement(elementID,final_x,final_y,interval);
 },interval);
 ```
+
 或者更加清楚明了的
-```
+
+```javasctipy
 var repeat = function() {
 moveElement(element, final_x, final_y, interval);
 }
 elem.movement = setTimeout(repeat, interval);
 ```
+
 嗯，愿我们都能遵守规范，写出清楚易懂的代码，减少不必要的脚本和不那么需要的动画，让世界更美好~

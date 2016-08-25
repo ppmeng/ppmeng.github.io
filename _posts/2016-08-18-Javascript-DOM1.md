@@ -32,10 +32,12 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 ## 增加占位符图片
 鉴于初始图片库的缺点做以下改进------点击查看[demo](http://codepen.io/ppmeng/pen/GZMzbm)
 
-```
+```html
 <!--html部分 在ul后面增加img作为显示图片的位置并在将onclick事件嵌入每个<a>里面-->
 <img src="" id="placeholder" alt="">
+```
 
+```javascript
 //javascript部分 增加showPic函数修改占位符处图片的src属性
 function showPic(whichpic) {
     var placeholder = document.getElementById("placeholder");
@@ -61,7 +63,7 @@ function showPic(whichpic) {
 ## 添加文本切换以及CSS样式
 点击查看这个版本的[demo](http://codepen.io/ppmeng/pen/reGbVM)
 
-```
+```javascript
 //JavaScript增加部分---实现文本切换
 var description = document.getElementById("description");
 var text = whichpic.getAttribute("title");
@@ -85,7 +87,7 @@ description.firstChild.nodeValue = text;
 
 点击查看这个版本的[demo](http://codepen.io/ppmeng/pen/yOzWOP)
 
-```
+```javascript
 //JavaScript添加部分
 function prepareGallery() {
     if (!document.getElementsByTagName) return false;
@@ -120,7 +122,7 @@ window.onload = prepareGallery;
 ## 不做假设，全部检测，结构和行为分开
 点击查看这次的[demo](http://codepen.io/ppmeng/pen/zqEVKY)
 
-```
+```javascript
 //JavaScript增加部分
 function preparePlaceholder() {
 	if (!document.createElement) return false;
