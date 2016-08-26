@@ -4,14 +4,14 @@ title                    : "PPMENG BLOG"
 title_separator          : "|"
 name                     : "王佳林"
 description              : "a Chinese blog website powered by Jekyll & Minimal Mistakes."
-url                      : "http://ppmenghome.com/"
+url                      : "http://ppmenghome.com"
 baseurl                  : 
 repository               : "ppmeng/ppmeng.github.io"
 teaser                   : "bg-img.png"
 breadcrumbs              : true
 words_per_minute         : 100
 comments:
-  provider               : "staticman" # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
+  provider               : "disqus" # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
 staticman:
   allowedFields          : ['name', 'email', 'url', 'message']
   branch                 : "master"# "master", "gh-pages"
