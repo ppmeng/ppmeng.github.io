@@ -17,7 +17,8 @@ author_profile: true
   {% endfor %}
 {% endfor %} 
 
+<ul>
 {% for category in group_names %}
-  <p><a href="{{ base_path }}{{ page.permalink | prepend: path_type }}{{ category | slugify }}">{{ category }}</a></p>
+  <li><a href="{{ base_path }}{{ page.permalink }}{{ category | slugify | prepend: path_type }}">{{ category }}</a></li>
 {% endfor %}
-
+</ul>
