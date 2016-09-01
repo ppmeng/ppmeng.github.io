@@ -19,6 +19,6 @@ author_profile: true
 
 <ul>
 {% for category in group_names %}
-  <li><a href="{{ base_path }}{{ page.permalink }}{{ category | slugify | prepend: path_type }}">{{ category }}</a></li>
+  <li><a href="{{ base_path }}{{ page.permalink }}{{ category | slugify | prepend: '#' }}">{{ category }}</a></li>
 {% endfor %}
 </ul>
