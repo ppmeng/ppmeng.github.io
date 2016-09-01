@@ -12,10 +12,10 @@
 
 <!-- Map -->
 {% assign __names =  include.collection | map: include.field %}
-{{__names}}
+
 <!-- Flatten -->
 {% assign __names =  __names | join: ',' | join: ',' | split: ',' %}
-{{__names}}
+
 <!-- Uniq -->
 {% assign __names =  __names | sort %}
 {% for name in __names | sort %}

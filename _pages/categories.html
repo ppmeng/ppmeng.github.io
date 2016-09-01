@@ -6,6 +6,7 @@ author_profile: true
 ---
 
 {% include base_path %}
+
 {% include group-by-array collection=site.posts field="categories" %}
 
 {% for category in group_names %}
@@ -17,8 +18,7 @@ author_profile: true
 {% endfor %} 
 
 {% for category in group_names %}
-  {% assign posts = group_items[forloop.index0] %}
-  <h2 id="{{ category | slugify }}" class="archive__subtitle">{{ category }}</h2>
+  <a href="{{ base_path }}{{ page.permalink | prepend: path }}{{ category | slugify }}">{{ category }}</a>
 {% endfor %}
 
 {% include toc %}
