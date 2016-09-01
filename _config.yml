@@ -11,7 +11,7 @@ teaser                   : "bg-img.png"
 breadcrumbs              : true
 words_per_minute         : 100
 comments:
-  provider               : "staticman" # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
+  provider               : "custom" # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
 staticman:
   allowedFields          : ['name', 'email', 'url', 'message']
   branch                 : "master"# "master", "gh-pages"
