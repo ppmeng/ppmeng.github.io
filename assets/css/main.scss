@@ -37,3 +37,17 @@
 @import "vendor/font-awesome/font-awesome";
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
+
+#all_tags {
+    margin: 20px 0;
+    .tag_keyword {
+        margin: 8px;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 8px;
+        background-color: #eee;
+        &:hover {
+            background-color: #bdc1c4;
+        }
+    }
+}

@@ -9,16 +9,16 @@ author_profile: true
 
 {% include group-by-array collection=site.posts field="categories" %}
 
+<ul id="all_categories" class="rightbar sticky">
+{% for category in group_names %}
+  <li class="categories_keyword"><a href="{{ category | slugify | prepend: '#' }}">{{ category }}</a></li>
+{% endfor %}
+</ul>
+
 {% for category in group_names %}
   {% assign posts = group_items[forloop.index0] %}
-  <h2 id="{{ category | slugify }}" class="archive__subtitle">{{ category }}</h2>
+  <h2 id="{{ category | slugify }}" class="archive__subtitle"><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i>{{ category }}</h2>
   {% for post in posts %}
     {% include archive-single.html %}
   {% endfor %}
 {% endfor %} 
-
-<ul>
-{% for category in group_names %}
-  <li><a href="{{ base_path }}{{ page.permalink }}{{ category | slugify | prepend: '#' }}">{{ category }}</a></li>
-{% endfor %}
-</ul>
