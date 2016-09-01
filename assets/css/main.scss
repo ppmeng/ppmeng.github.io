@@ -41,13 +41,31 @@
 #all_tags {
     margin: 20px 0;
     .tag_keyword {
-        margin: 8px;
+        display: inline-block;
+        margin: 5px 2px;
         padding: 5px 10px;
         border: none;
-        border-radius: 8px;
-        background-color: #eee;
+        border-radius: 16px;
+        font-size: 14px;
+        background-color: rgb(117, 167, 209);
         &:hover {
-            background-color: #bdc1c4;
+            background-color: rgb(100, 157, 199);
         }
     }
+    @media (min-width: 80em) {
+        & {
+            padding-right: 400px;
+        }        
+    }
+    @media (min-width: 64em) {
+        & {
+            padding-right: 300px;
+        }        
+    }
+    @media (min-width: 48em) {
+        & {
+            padding-right: 200px;
+        }        
+    }
 }
+
