@@ -15,3 +15,7 @@ author_profile: true
     {% include archive-single.html %}
   {% endfor %}
 {% endfor %}
+
+{% for category in group_names %}
+  <h2 id="{{ category | slugify }}" class="archive__subtitle">{{ category }}</h2>
+{% endfor %}
