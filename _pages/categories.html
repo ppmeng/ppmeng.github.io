@@ -18,7 +18,6 @@ author_profile: true
 {% endfor %} 
 
 {% for category in group_names %}
-  <a href="{{ base_path }}{{ page.permalink | prepend: path }}{{ category | slugify }}">{{ category }}</a>
+  <p><a href="{{ base_path }}{{ page.permalink | prepend: path_type }}{{ category | slugify }}">{{ category }}</a></p>
 {% endfor %}
 
-{% include toc %}

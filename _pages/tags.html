@@ -16,6 +16,6 @@ author_profile: true
   {% endfor %}
 {% endfor %}
 
-{% for category in group_names %}
-  <h2 id="{{ category | slugify }}" class="archive__subtitle">{{ category }}</h2>
+{% for tag in group_names %}
+  <p><a href="{{ base_path }}{{ page.permalink | prepend: path_type }}{{ tag | slugify }}">{{ tag }}</a></p>
 {% endfor %}
