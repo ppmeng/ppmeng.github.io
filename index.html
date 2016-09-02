@@ -9,12 +9,6 @@ author_profile: true
 
 {% for post in paginator.posts %}
   {% include archive-single.html %}
-  {% if post.read_time %}
-    <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
-  {% endif %}
-  {% if post.excerpt %}
-    <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>
-  {% endif %}
 {% endfor %}
 
 

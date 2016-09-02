@@ -8,18 +8,6 @@ author_profile: true
 {% include base_path %}
 {% include group-by-array collection=site.posts field="tags" %}
 
-{% if post.header.teaser %}
-  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
-{% else %}
-  {% assign teaser = site.teaser %}
-{% endif %}
-
-{% if post.id %}
-  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
-{% else %}
-  {% assign title = post.title %}
-{% endif %}
-
 <p id="all_tags">
 {% for tag in group_names %}
   <span class="tag_keyword"><a href="{{ tag | slugify | prepend: '#'}}">{{ tag }}</a></span>
@@ -30,27 +18,6 @@ author_profile: true
   {% assign posts = group_items[forloop.index0] %}
   <h2 id="{{ tag | slugify }}" class="archive__subtitle"><i class="fa fa-fw fa-tags" aria-hidden="true"></i>{{ tag }}</h2>
   {% for post in posts %}
-    <div class="{{ include.type | default: "list" }}__item">
-      <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-      {% if include.type == "grid" and teaser %}
-        <div class="archive__item-teaser">
-          <img src=
-          {% if teaser contains "://" %}
-            "{{ teaser }}"
-          {% else %}
-            "{{ teaser | prepend: "/images/" | prepend: base_path }}"
-          {% endif %}
-          alt="">
-        </div>
-      {% endif %}
-      <h2 class="archive__item-title" itemprop="headline">
-      {% if post.link %}
-        <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only" style="margin-left: 20px">Permalink</span></a>
-      {% else %}
-        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
-      {% endif %}
-      </h2>
-      </article>
-    </div>
+    {% include archive-single-onlyheader.html %}
   {% endfor %}
 {% endfor %}
