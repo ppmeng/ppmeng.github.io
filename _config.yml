@@ -14,7 +14,7 @@ comments:
   provider               : "staticman" # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
 staticman:
   allowedFields          : ['name', 'email', 'url', 'message']
-  branch                 : "master"# "master", "gh-pages"
+  branch                 : "gh-pages"# "master", "gh-pages"
   commitMessage          : "New comment."
   filename               : comment-{@timestamp}
   format                 : "yml"
@@ -158,6 +158,7 @@ defaults:
       comments: true
       share: true
       related: true
+      
   # _pages
   - scope:
       path: ""
