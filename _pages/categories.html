@@ -11,9 +11,12 @@ author_profile: true
   
  
 <ul id="all_categories" class="rightbar">
-{% for category in group_names %}
-  <li class="categories_keyword"><a href="{{ category | slugify | prepend: '#' }}">{{ category }}</a></li>
-{% endfor %}
+{% if group_names %}
+  <h2>分类列表</h2>
+  {% for category in group_names %}
+    <li class="categories_keyword"><a href="{{ category | slugify | prepend: '#' }}">{{ category }}</a></li>
+  {% endfor %}
+{% endif %}
 </ul>
 
 {% for category in group_names %}
