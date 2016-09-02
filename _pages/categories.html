@@ -9,14 +9,13 @@ author_profile: true
 
 {% include group-by-array collection=site.posts field="categories" %}
   
- 
-<ul id="all_categories" class="rightbar">
 {% if group_names %}
-  <h2>分类列表</h2>
+  <h2 style="font-size: 1.25em; color: #0085a1; font-weight: normal">分类列表</h2>
+{% endif %}
+<ul id="all_categories" class="rightbar">
   {% for category in group_names %}
     <li class="categories_keyword"><a href="{{ category | slugify | prepend: '#' }}">{{ category }}</a></li>
   {% endfor %}
-{% endif %}
 </ul>
 
 {% for category in group_names %}
