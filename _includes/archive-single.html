@@ -39,9 +39,9 @@
     {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
     
     {% if post.modified %}
-      <p class="page__date"><time datetime="{{ post.modified | date: "%Y-%m-%d" }}">{{ post.modified | date: "%B %d, %Y" }}</time></p>
+      <p class="page__meta"><time datetime="{{ post.modified | date: "%Y-%m-%d" }}">Posted by {{ author.ID }} on {{ post.modified | date: "%B %d, %Y" }}</time></p>
     {% elsif post.date %}
-      <p class="page__date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></p>
+      <p class="page__meta"><time datetime="{{ post.date | date_to_xmlschema }}">Posted by {{ author.ID }} on {{ post.date | date: "%B %d, %Y" }}</time></p>
     {% endif %}
   </article>
 </div> 

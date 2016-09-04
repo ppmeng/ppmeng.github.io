@@ -18,37 +18,36 @@ HTML中绝大多数属性在网页中是不显示的，少数可显示的属性�
 
 1. 获取将要显示的属性节点
 
-   ```javascript
-   var abbreviations = document.getElementsByTagName("abbr");
-   if (abbreviations.length == 0) return false;
-   var defs = new Array();
-   //遍历所有缩略词
-   for (var i = 0; i < abbreviations.length; i++) {
+    ```javascript
+    var abbreviations = document.getElementsByTagName("abbr");
+    if (abbreviations.length == 0) return false;
+    var defs = new Array();
+    //遍历所有缩略词
+    for (var i = 0; i < abbreviations.length; i++) {
         var current_abbr = abbreviations[i]
         //兼容低版本IE（IE6）
         if (current_abbr.childNodes.length < 1) continue;
         var definition = current_abbr.getAttribute("title");
         var key = current_abbr.lastChild.nodeValue;
         defs[key] = definition;
-    }
-    ```
+     }
+     ```
 
 2. 创建标记——其中创建定义标题和定义描述里面的文本节点时采用了两种不同的方法，一种是直接创建文本节点**createTextNode**再添加到元素节点，另一种直接使用**innerHTML**赋值,两种方法都可以，相对而言采用innerHTML代码量比较少
 
-   ```javascript
-   for (var key in defs) {
-       //创建定义标题
-	   var dtitle = document.createElement("dt");
-	   var dtitle_text = document.createTextNode(key);
-       dtitle.appendChild(dtitle_text);
-       //创建定义描述
-	   var ddesc = document.createElement("dd");
-	   ddesc.innerHTML = defs[key];
-       //添加到定义列表
-	   dlist.appendChild(dtitle);
-       dlist.appendChild(ddesc);
-   }
-   ```
+    for (var key in defs) {
+        //创建定义标题
+	    var dtitle = document.createElement("dt");
+	    var dtitle_text = document.createTextNode(key);
+        dtitle.appendChild(dtitle_text);
+        //创建定义描述
+	    var ddesc = document.createElement("dd");
+	    ddesc.innerHTML = defs[key];
+        //添加到定义列表
+	    dlist.appendChild(dtitle);
+        dlist.appendChild(ddesc);
+    }
+   
 
 3. 添加到指定位置
 
