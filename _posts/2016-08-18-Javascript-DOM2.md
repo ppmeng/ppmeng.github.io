@@ -10,44 +10,46 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 上周在[理解DOM脚本编程背后的艺术（一）](http://ppmenghome.com/javascript/Javascript-DOM1/)里面以创建图片库的形式讲解了JavaScript中一些主要的DOM操作，那这次就主要使用上周已经掌握的DOM操作，设计一些具体实例，来分析 **JavaScript** 和 **HTML**，**CSS** 的联系以及使用
 
 ## JavaScript之充实文档的内容
+
 为保证在最坏的情况下（比如浏览器版本太旧或者JS脚本被禁止）用户依然可以理解网页主要内容，我们要在渐进增强和平稳退化的思想上设计网页，将网页的主要结构以及内容用**HTML**直接显示，但是在下面两种情况下我们不得不使用**JacaScript**来改变网页内容
 
 ### 将“不可见”变为“可见”
+
 HTML中绝大多数属性在网页中是不显示的，少数可显示的属性（eg：title）在不同的浏览器里面显示的状态也不一样，假如没有JavaScript，属性的显示问题上面我们就只能屈服于浏览器，但是现在我们可以使用一些简单的DOM操作将属性显示问题掌握在自己手里，下面以具体实例(将HTML中所有缩写词显示在文档最后的列表中)来讲解如何将不可见的属性变为可见
 点击查看demo------[demo](http://codepen.io/ppmeng/pen/dMdMzQ)
 
 1. 获取将要显示的属性节点
 
    ```javascript
-    var abbreviations = document.getElementsByTagName("abbr");
-    if (abbreviations.length == 0) return false;
-    var defs = new Array();
-    //遍历所有缩略词
-    for (var i = 0; i < abbreviations.length; i++) {
-        var current_abbr = abbreviations[i]
-        //兼容低版本IE（IE6）
-        if (current_abbr.childNodes.length < 1) continue;
-        var definition = current_abbr.getAttribute("title");
-        var key = current_abbr.lastChild.nodeValue;
-        defs[key] = definition;
-     }
+   var abbreviations = document.getElementsByTagName("abbr");
+   if (abbreviations.length == 0) return false;
+   var defs = new Array();
+   //遍历所有缩略词
+   for (var i = 0; i < abbreviations.length; i++) {
+       var current_abbr = abbreviations[i]
+       //兼容低版本IE（IE6
+       if (current_abbr.childNodes.length < 1) continue;
+       var definition = current_abbr.getAttribute("title");
+       var key = current_abbr.lastChild.nodeValue;
+       defs[key] = definition;
+    }
     ```
 
 2. 创建标记——其中创建定义标题和定义描述里面的文本节点时采用了两种不同的方法，一种是直接创建文本节点**createTextNode**再添加到元素节点，另一种直接使用**innerHTML**赋值,两种方法都可以，相对而言采用innerHTML代码量比较少
   
    ```javascript
-    for (var key in defs) {
-        //创建定义标题
-	    var dtitle = document.createElement("dt");
-	    var dtitle_text = document.createTextNode(key);
-        dtitle.appendChild(dtitle_text);
-        //创建定义描述
-	    var ddesc = document.createElement("dd");
-	    ddesc.innerHTML = defs[key];
-        //添加到定义列表
-	    dlist.appendChild(dtitle);
-        dlist.appendChild(ddesc);
-    }
+   for (var key in defs) {
+      //创建定义标题
+	  var dtitle = document.createElement("dt");
+	  var dtitle_text = document.createTextNode(key);
+      dtitle.appendChild(dtitle_text);
+      //创建定义描述
+	  var ddesc = document.createElement("dd");
+	  ddesc.innerHTML = defs[key];
+      //添加到定义列表
+	  dlist.appendChild(dtitle);
+      dlist.appendChild(ddesc);
+   }
    ```
 
 3. 添加到指定位置
@@ -65,6 +67,7 @@ HTML中绝大多数属性在网页中是不显示的，少数可显示的属性�
    ```
 
 ### 响应用户的操作增加内容
+
 点击查看这个部分的demo------[demo](http://ppmeng.github.io/baidu.IFE2016/task2/task2-4/task2-4.html),
 示例采用[百度前端技术学院任务十六](http://ife.baidu.com/task/detail?taskId=16)，简单讲就是把用户输入的文本采用表格的形式添加到文档body之后，并且要完成一些验证以及添加删除按钮，验证部分采用正则仔细分析发现，这个部分和前面例子大同小异，都是要先获取节点，然后创建标记，最后添加至指定位置，所以不再赘述，接下来主要讲一下如何在用户点击表格列中的“删除”按钮之后，删掉那一行的数据
 
