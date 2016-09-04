@@ -197,7 +197,7 @@
 
 .page__share {
   margin-top: 2em;
-  padding-top: 1em;
+  padding: 1em 0;
   border-top: 1px solid $border-color;
 
   @include breakpoint(max-width $small) {
@@ -238,6 +238,11 @@
   a {
     color: inherit;
   }
+}
+
+.page__pre-next {
+   margin: 0; 
+   padding:1em 0 2em;
 }
 
 .page__meta-title {
