@@ -1,7 +1,7 @@
 {% include base_path %}
 
 <section class="page__share">
-  <div class="ds-share" data-thread-key="page.id" data-title="page.title" data-images="{{ site.url }}{{site.baseurl}}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" data-content="{{ content | strip_html | truncate:80 }} | {{ site.SEOTitle }}" data-url="{{site.url}}{{site.baseurl}}{{page.url}}">
+  <div class="ds-share" data-thread-key="{{ page.id }}" data-title="{{ page.title }}" data-images="{{ site.url }}{{site.baseurl}}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" data-content="{{ content | strip_html | truncate:80 }} | {{ site.SEOTitle }}" data-url="{{site.url}}{{site.baseurl}}{{page.url}}">
     
     <div class="ds-share-inline">
       <ul  class="ds-share-icons-16">
