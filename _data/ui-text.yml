@@ -12,7 +12,7 @@ zh: &DEFAULT_ZH
   ext_link_label             : "链接"
   less_than                  : "less than"
   minute_read                : "minute read"
-  share_on_label             : "分享"
+  share_on_label             : "分享到："
   meta_label                 :
   tags_label                 : "标签"
   categories_label           : "分类"
