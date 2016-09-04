@@ -1,5 +1,5 @@
 {% include base_path %}
-
+ 
 <div class="page__comments">
   {% capture comments_label %}{{ site.data.ui-text[site.locale].comments_label | default: "Comments" }}{% endcapture %}
   {% case site.comments.provider %}
@@ -77,6 +77,10 @@
       {% endif %}
     </section>
   {% when "custom" %}
-    <section id="comments"></section>
+    <section id="comments">
+      <!-- 多说评论框 start -->
+      <div class="ds-thread" data-thread-key="{{ post.id }}" data-title="{{ post.title }}" data-url="{{ post.url }}"></div>
+      <!-- 多说评论框 end -->
+    </section>
   {% endcase %}
 </div>
