@@ -36,12 +36,12 @@
       <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
     {% endif %}
     
-    {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
+    {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description" style="margin-bottom: .6em">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
     
     {% if post.modified %}
-      <p class="page__meta"><time datetime="{{ post.modified | date: "%Y-%m-%d" }}">Posted by {{ author.ID }} on {{ post.modified | date: "%B %d, %Y" }}</time></p>
+      <p class="page__meta" style="text-align: right"><time datetime="{{ post.modified | date: "%Y-%m-%d" }}">Posted by {{ author.idname }} on {{ post.modified | date: "%B %d, %Y" }}</time></p>
     {% elsif post.date %}
-      <p class="page__meta"><time datetime="{{ post.date | date_to_xmlschema }}">Posted by {{ author.ID }} on {{ post.date | date: "%B %d, %Y" }}</time></p>
+      <p class="page__meta" style="text-align: right"><time datetime="{{ post.date | date_to_xmlschema }}">Posted by {{ author.idname }} on {{ post.date | date: "%B %d, %Y" }}</time></p>
     {% endif %}
   </article>
 </div> 

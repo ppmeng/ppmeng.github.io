@@ -62,7 +62,7 @@ analytics:
 # Site Author
 author:
   name             : "王佳林"
-  ID               : "ppmeng"
+  idname           : "ppmeng"
   avatar           : "bio-photo.png"
   bio              : "努力做个有趣的人"
   location         : "ShenZhen China"
