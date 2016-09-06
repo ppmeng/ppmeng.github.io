@@ -11,7 +11,7 @@ teaser                   : "bg-img.png"
 breadcrumbs              : true
 words_per_minute         : 100
 comments:
-  provider               : "custom" # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
+  provider               : "custom" # false (default), "disqus", "staticman", "custom"
 staticman:
   allowedFields          : ['name', 'email', 'url', 'message']
   branch                 : "master"# "master", "gh-pages"
@@ -54,7 +54,7 @@ social:
 
 # Analytics
 analytics:
-  provider               : false # false (default), "google", "google-universal", "custom"
+  provider               : google-universal
   google:
     tracking_id          :
 
