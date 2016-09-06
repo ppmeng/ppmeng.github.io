@@ -71,7 +71,9 @@
 }
 
 .categories_keyword {
+    list-style: none;
+    color: #0085a1;
     &:hover {
-        color: #0085a1;
+        text-decoration: underline;
     }
 }

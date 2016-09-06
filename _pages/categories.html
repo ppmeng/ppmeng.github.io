@@ -12,11 +12,13 @@ author_profile: true
 {% if group_names %}
   <h2 style="font-size: 1.25em; color: #0085a1; font-weight: normal">分类列表</h2>
 {% endif %}
-<ul id="all_categories" class="rightbar">
-  {% for category in group_names %}
-    <li class="categories_keyword"><a href="{{ category | slugify | prepend: '#' }}">{{ category }}</a></li>
-  {% endfor %}
-</ul>
+<blockquote style="border-left-color:#eee">
+  <ul id="all_categories" class="rightbar">
+    {% for category in group_names %}
+      <li class="categories_keyword"><a href="{{ category | slugify | prepend: '#' }}">{{ category }}</a></li>
+    {% endfor %}
+  </ul>
+</blockquote>
 
 {% for category in group_names %}
   {% assign posts = group_items[forloop.index0] %}

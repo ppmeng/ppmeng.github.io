@@ -29,7 +29,7 @@ staticman:
       options:
         format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 atom_feed:
-  path                   : # blank (default) uses feed.xml 为博客添加RSS订阅功能
+  path                   : # blank (default) uses feed.xml  use jekyll-feed plugins
 
 # SEO Related
 google_site_verification :
