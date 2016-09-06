@@ -10,12 +10,12 @@
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     <h2 class="archive__item-title" itemprop="headline" style="margin:1em 0 0 2em;font-size:1.1em;color: #494e52;font-weight: normal">
       {% if post.link %}
-        <a href="{{ post.link }}">{{ title }}</a> 
-        <a href="{{ base_path }}{{ post.url }}" rel="permalink">
+        <a target="_blank" href="{{ post.link }}">{{ title }}</a> 
+        <a target="_blank" href="{{ base_path }}{{ post.url }}" rel="permalink">
             <i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span>
         </a>
       {% else %}
-        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
+        <a target="_blank" href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
       {% endif %}
     </h2>
   </article>

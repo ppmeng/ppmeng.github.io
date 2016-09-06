@@ -17,7 +17,7 @@
 <figure class="{{ gallery_layout }} {{ include.class }}">
   {% for img in gallery %}
     {% if img.url %}
-      <a href=
+      <a target="_blank" href=
         {% if img.url contains "://" %}
           "{{ img.url }}"
         {% else %}
