@@ -103,15 +103,15 @@ jekyll 3.2.1 | Error:  jemoji
 解决办法： gem install jemoji
 
 问题3：
- Liquid Warning: Liquid syntax error (line 21): Expected id but found number in "{{ site.404-img }}" in /Users/wjl/mywork/jekyll/_layouts/error.html
+ Liquid Warning: Liquid syntax error (line 21): Expected id but found number in "{{ site.404img }}" in /Users/wjl/mywork/jekyll/_layouts/error.html
 done in 0.875 seconds 
 Please add the following to your Gemfile to avoid polling for changes:
     gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 问题4：
- Liquid Warning: Liquid syntax error (line 21): Expected id but found number in "{{ site.404-img }}" in /Users/wjl/mywork/jekyll/_layouts/error.html
+ Liquid Warning: Liquid syntax error (line 21): Expected id but found number in "{{ site.404img }}" in /Users/wjl/mywork/jekyll/_layouts/error.html
 这个应该是我这个模板的个例，不影响网站的显示但是看着warning也不爽
-解决办法:将_config.yml里面的404-img改为404_img, 然后把{{ site.404-img }}改为“{{site.404_img}}”
+解决办法:将_config.yml里面的404-img改为404_img, 然后把{{ site.404img }}改为“{{site.404_img}}”
 ```
 
 ### 也许会遇到的问题
