@@ -1,5 +1,6 @@
 ---
 title: "《JavaScript DOM 编程艺术》读书笔记（三）"
+id: "2016-08-18-Javascript-DOM3"
 categories: "JavaScript"
 tags: ["JavaScript", "DOM", "读书笔记"]
 ---
