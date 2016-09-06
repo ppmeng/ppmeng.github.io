@@ -54,9 +54,9 @@ social:
 
 # Analytics
 analytics:
-  provider               : google-universal
+  provider               : "google-universal" #"google-universal" "google" "custom" 
   google:
-    tracking_id          :
+    tracking_id          : 'UA-83682991-1'
 
 
 # Site Author
