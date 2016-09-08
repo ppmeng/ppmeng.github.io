@@ -22,6 +22,6 @@ gem "wdm", "~> 0.1.0" if Gem.win_platform?
 gem "jekyll-archives"
 group :jekyll_plugins do
   # gem "jekyll-archives"
-  gem 'certified'
   gem 'jekyll-feed'
+  gem 'certified'
 end
