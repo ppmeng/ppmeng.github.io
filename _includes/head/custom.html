@@ -1,5 +1,13 @@
 <!-- start custom head snippets -->
 
 <!-- insert favicons. use http://realfavicongenerator.net/ -->
-<link rel="shortcut icon" href="icon.ico">
+{% if site.data.favicon %}
+  {% assign favicon = site.data.favicon %}
+{% endif %}
+
+{% if favicon contains "://" %}
+    <link rel="shortcut icon" href="{{ favicon }}">
+{% else %}
+    <link rel="shortcut icon" href="{{ favicon | prepend: '/images/' | prepend: base_path }}">
+{% endif %}
 <!-- end custom head snippets -->
