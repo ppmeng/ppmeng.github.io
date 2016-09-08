@@ -6,8 +6,8 @@
 {% endif %}
 
 {% if favicon contains "://" %}
-    <link rel="shortcut icon" href="{{ favicon }}">
+    <link rel="shortcut icon" href="favicon">
 {% else %}
-    <link rel="shortcut icon" href="{{ favicon | prepend: '/images/' | prepend: base_path }}">
+    <link rel="shortcut icon" href="favicon | prepend: '/images/' | prepend: base_path">
 {% endif %}
 <!-- end custom head snippets -->
