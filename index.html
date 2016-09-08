@@ -7,16 +7,6 @@ author_profile: true
 
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
 
-{% if site.data.favicon %}
-  {% assign favicon = site.data.favicon %}
-{% endif %}
-
-{% if favicon contains "://" %}
-    {{ favicon }}
-{% else %}
-    {{ favicon | prepend: '/images/' | prepend: base_path }}
-{% endif %}
-
 {% for post in paginator.posts %}
   {% include archive-single.html %}
 {% endfor %}

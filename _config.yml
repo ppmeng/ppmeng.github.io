@@ -42,7 +42,7 @@ yandex_site_verification :
 twitter:
   username               : 
 facebook:
-  username               : "Jialin Wang"
+  username               : "ppmeng.wang"
   app_id                 :
   publisher              :
 og_image                 : # Open Graph/Twitter default site image
@@ -69,10 +69,10 @@ author:
   email            : "yswdzlg@gmail.com"
   uri              : "http://ppmenghome.com"
   bitbucket        :
-  codepen          : "wangjialin"
+  codepen          : 
   dribbble         :
   flickr           :
-  facebook         : "Jialin Wang"
+  facebook         : "ppmeng.wang"
   foursquare       :
   github           : "ppmeng"
   google_plus      :
@@ -82,7 +82,7 @@ author:
   linkedin         :
   pinterest        :
   soundcloud       :
-  stackoverflow    : "5938372/wangjialin"# http://stackoverflow.com/users/123456/username
+  stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
   twitter          :

@@ -21,7 +21,7 @@ zh: &DEFAULT_ZH
   comments_title             : "评论"
   more_label                 : "查看更多"
   related_label              : "您可能感兴趣的"
-  follow_label               : "关注"
+  follow_label               : "Follow"
   feed_label                 : "RSS订阅"
   powered_by                 : "powered by"
   website_label              : "Website"
