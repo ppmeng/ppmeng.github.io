@@ -1,5 +1,5 @@
 {% include base_path %}
-
+  
 <div class="page__footer-follow">
   <ul class="social-icons">
     {% if site.data.ui-text[site.locale].follow_label %}
@@ -8,6 +8,9 @@
     {% if site.twitter.username %}
       <li><a target="_blank" href="https://twitter.com/{{ site.twitter.username }}"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
     {% endif %}
+    {% if site.author.weibo %}
+        <li><a target="_blank" href="https://www.weibo.com/{{ site.author.weibo }}"><i class="fa fa-fw fa-weibo" aria-hidden="true"></i> Weibo</a></li>
+      {% endif %}
     {% if site.facebook.username %}
       <li><a target="_blank" href="https://facebook.com/{{ site.facebook.username }}"><i class="fa fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
     {% endif %}

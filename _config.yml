@@ -11,7 +11,7 @@ teaser                   : "bg-img.png"
 breadcrumbs              : true
 words_per_minute         : 100
 comments:
-  provider               : "custom" # false (default), "disqus", "staticman", "custom"
+  provider               : "custom" # false (default), "disqus", "staticman", "custom" 目前采用的是多说，配置并测试过staticman
 staticman:
   allowedFields          : ['name', 'email', 'url', 'message']
   branch                 : "master"# "master", "gh-pages"
@@ -39,9 +39,9 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               :
+  username               : 
 facebook:
-  username               :
+  username               : "Jialin Wang"
   app_id                 :
   publisher              :
 og_image                 : # Open Graph/Twitter default site image
@@ -68,10 +68,10 @@ author:
   email            : "yswdzlg@gmail.com"
   uri              : "http://ppmenghome.com"
   bitbucket        :
-  codepen          :
+  codepen          : "wangjialin"
   dribbble         :
   flickr           :
-  facebook         :
+  facebook         : "Jialin Wang"
   foursquare       :
   github           : "ppmeng"
   google_plus      :
@@ -81,7 +81,7 @@ author:
   linkedin         :
   pinterest        :
   soundcloud       :
-  stackoverflow    : # http://stackoverflow.com/users/123456/username
+  stackoverflow    : "5938372/wangjialin"# http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
   twitter          :

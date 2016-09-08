@@ -22,7 +22,7 @@ zh: &DEFAULT_ZH
   more_label                 : "查看更多"
   related_label              : "您可能感兴趣的"
   follow_label               : "关注"
-  feed_label                 : "订阅"
+  feed_label                 : "RSS订阅"
   powered_by                 : "powered by"
   website_label              : "Website"
   email_label                : "yswdzlg@gmail.com"
