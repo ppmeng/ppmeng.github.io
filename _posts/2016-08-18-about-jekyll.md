@@ -1,6 +1,5 @@
 ---
 title: "使用jekyll + github 搭建博客"
-id: "2016-08-18-about-jekyll"
 categories: "jekyll"
 tags: ["jekyll", "github", "domain name"]
 ---
