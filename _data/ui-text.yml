@@ -7,7 +7,7 @@ zh: &DEFAULT_ZH
   pagination_previous        : "前一页"
   pagination_next            : "后一页"
   breadcrumb_home_label      : "Home"
-  breadcrumb_separator       : ">"
+  breadcrumb_separator       : "/"
   toc_label                  : "当前页"
   ext_link_label             : "链接"
   less_than                  : "less than"
