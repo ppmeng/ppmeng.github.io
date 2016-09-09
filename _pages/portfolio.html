@@ -1,8 +1,14 @@
 ---
-layout: single
+layout: archive
 title: "Portfolio"
 id: "pages/portfolio"
-excerpt: "Page not found. Your pixels are in another canvas."
-sitemap: false
 permalink: /portfolio/
 ---
+
+{% include base_path %}
+
+<div class="grid__wrapper">
+  {% for post in site.portfolio %}
+    {% include archive-single.html type="grid" %}
+  {% endfor %}
+</div>

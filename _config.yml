@@ -144,7 +144,10 @@ kramdown:
   enable_coderay: false
 
 #Collections
-
+collections:
+  portfolio:
+    output: true
+    permalink: /:collection/:path/
  
 # Defaults
 defaults:
@@ -158,8 +161,7 @@ defaults:
       read_time: true
       comments: true
       share: true
-      related: true
-      
+      related: true    
   # _pages
   - scope:
       path: ""
@@ -167,8 +169,16 @@ defaults:
     values:
       layout: single
       author_profile: true
-      
-      
+  #_portfolio
+  - scope:
+      path: ""
+      type: portfolio
+    values:
+      layout: single
+      author_profile: true
+      share: true
+
+
 category_archive:
   type: liquid
   path: /categories/
