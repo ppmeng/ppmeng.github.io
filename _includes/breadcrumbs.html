@@ -1,6 +1,6 @@
 {% include base_path %}
 
-<!--
+
 {% case site.categories.type %}
   {% when "liquid" %}
     {% assign path_type = "#" %}
@@ -16,11 +16,11 @@
   {% assign path_type = '#' %}
   {% assign crumb_path =  '/categories/' %}
 {% endif %}
--->
 
+<!--
 {% assign path_type = '#' %}
 {% assign crumb_path = '/categories/' %}
-
+-->
 <nav class="breadcrumbs">
   <ol itemscope itemtype="http://schema.org/BreadcrumbList">
     {% assign crumbs = page.url | split: '/' %}
@@ -42,7 +42,10 @@
         {% assign i = i | plus: 1 %}
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
           <a href="{{ base_path }}{{ crumb crumb | downcase | replace: '%20', '-' | prepend: path_type | prepend: crumb_path }}" itemprop="item">
+            <!--
             <span itemprop="name">{{ page.categories[0] | capitalize }}</span>
+            -->
+            <span itemprop="name">{{ crumb | replace: '-', ' ' | replace: '%20', ' ' | capitalize }}</span>
           </a>
           <meta itemprop="position" content="{{ i }}" />
         </li>

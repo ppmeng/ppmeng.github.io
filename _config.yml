@@ -175,7 +175,7 @@ defaults:
       type: portfolio
     values:
       layout: single
-      author_profile: true
+      comments: true
       share: true
 
 
