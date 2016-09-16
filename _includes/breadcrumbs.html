@@ -45,7 +45,12 @@
             <!--
             <span itemprop="name">{{ page.categories[0] | capitalize }}</span>
             -->
-            <span itemprop="name">{{ crumb | replace: '-', ' ' | replace: '%20', ' ' | capitalize }}</span>
+            {% if crumb | replace: '-', ' ' | replace: '%20', ' ' | capitalize != page.categories[0] | capitalize %}
+              {% assign crumb = page.categories[0] | capitalize %}
+            {% else %}
+              {% assign crumb = crumb | replace: '-', ' ' | replace: '%20', ' ' | capitalize %}
+            {% endif %}
+            <span itemprop="name">{{ crumb }}</span>
           </a>
           <meta itemprop="position" content="{{ i }}" />
         </li>
