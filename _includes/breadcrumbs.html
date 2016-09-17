@@ -45,7 +45,9 @@
             <!--
             <span itemprop="name">{{ page.categories[0] | capitalize }}</span>
             -->
-            {% if crumb | replace: '-', ' ' | replace: '%20', ' ' | capitalize != page.categories[0] | capitalize %}
+            {{ crumb }
+            {{ page.categories[0] }}
+            {% if crumb != page.categories[0] %}
               {% assign crumb = page.categories[0] | capitalize %}
             {% else %}
               {% assign crumb = crumb | replace: '-', ' ' | replace: '%20', ' ' | capitalize %}
