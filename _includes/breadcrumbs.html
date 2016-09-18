@@ -40,11 +40,11 @@
 
           
             {% if page.categories %}
-              {% assign span = page.categories.first | capitalize %}
+              {% assign spancontent = page.categories[0] | capitalize %}
             {% else %}
-              {% assign span = crumb | capitalize %}
+              {% assign spancontent = crumb | replace: '-', ' ' | replace: '%20', ' ' | capitalize %}
             {% endif %}
-            <span itemprop="name">{{ span }}</span>
+            <span itemprop="name">{{ spancontent }}</span>
           </a>
 
           <meta itemprop="position" content="{{ i }}" />
