@@ -36,7 +36,6 @@ layout: default
       <section class="page__content" itemprop="text">
         {{ content }}
         {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
-        
       </section>
 
       <footer class="page__meta">
@@ -60,9 +59,8 @@ layout: default
       {% include comments.html %}
     {% endif %}
   </article>
-  
+
   {% comment %}<!-- only show related on a post page when not disabled -->{% endcomment %}
-  
   {% if page.id and page.related and site.related_posts.size > 0 %}
     <div class="page__related">
       {% if site.data.ui-text[site.locale].related_label %}
@@ -75,6 +73,4 @@ layout: default
       </div>
     </div>
   {% endif %}
-
-  
 </div>
