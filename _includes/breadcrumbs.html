@@ -41,16 +41,15 @@
       {% else %}
         {% assign i = i | plus: 1 %}
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a href="{{ base_path }}{{ crumb crumb | downcase | replace: '%20', '-' | prepend: path_type | prepend: crumb_path }}" itemprop="item">
-            <!--
-            <span itemprop="name">{{ page.categories[0] | capitalize }}</span>
-            -->
-            {{ crumb }}
-            {{ page.categories[0] }}
-            {% if crumb != page.categories[0] %}
-              {% assign crumb = page.categories[0] | capitalize %}
+          {% if crumb == 'portfolio' %}
+            {% assign link = {{ base_path }}/portfolio/ %}
+          {% else %}
+            {% assign link = {{ base_path }}{{ crumb crumb | downcase | replace: '%20', '-' | prepend: path_type | prepend: crumb_path }} %}
+          <a href="{{ link }}" itemprop="item">
+            {% if page.categories %}
+              {% assign crumb = page.categories.first | capitalize %}
             {% else %}
-              {% assign crumb = crumb | replace: '-', ' ' | replace: '%20', ' ' | capitalize %}
+              {% assign crumb = crumb | capitalize %}
             {% endif %}
             <span itemprop="name">{{ crumb }}</span>
           </a>
