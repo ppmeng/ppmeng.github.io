@@ -13,7 +13,7 @@ zh: &DEFAULT_ZH
   less_than                  : "less than"
   to_read                    : "to read"
   share_on_label             : "分享到："
-  meta_label                 : "Meta:"
+  meta_label                 : 
   tags_label                 : "标签"
   categories_label           : "分类"
   date_label                 : "更新于"
