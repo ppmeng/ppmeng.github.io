@@ -39,7 +39,6 @@
 @import "print";
 
 #all_tags {
-    @include full();
     .tag_keyword {
         display: inline-block;
         margin: 5px 2px;
@@ -56,10 +55,8 @@
 }
 
 .categories_keyword {
-    @include full();
     list-style: none;
     color: #0085a1;
-    display: block;
     -webkit-margin-before: 0.7em;
     -webkit-margin-after: 0em;
     -webkit-margin-start: 0px;
