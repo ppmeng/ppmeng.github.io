@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: archive
 permalink: /tags/
 title: "Posts by Tags"
 id: "pages/tags"
@@ -8,40 +8,20 @@ id: "pages/tags"
 {% include base_path %}
 {% include group-by-array collection=site.posts field="tags" %}
 
-{% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
-  {% include page__hero.html %}
-{% endif %}
 
-{% if page.url != "/" and site.breadcrumbs %}
-  {% unless paginator %}
-    {% include breadcrumbs.html %}
-  {% endunless %}
-{% endif %}
-
-<div id="main" role="main">
-  {% include sidebar.html %}
-
-  <div class="page">
-    {% unless page.header.overlay_color or page.header.overlay_image %}
-      <h1 class="page__title">{{ page.title }}</h1>
-    {% endunless %}
-    
-    <div class="group__content">
-      <p id="all_tags">
-      {% for tag in group_names %}
-        <span class="tag_keyword"><a href="{{ tag | slugify | prepend: '#'}}">{{ tag }}</a></span>
-      {% endfor %}
-      </p>
+<p id="all_tags">
+  {% for tag in group_names %}
+    <span class="tag_keyword"><a href="{{ tag | slugify | prepend: '#'}}">{{ tag }}</a></span>
+  {% endfor %}
+</p>
       
-      {% for tag in group_names %}
-        {% assign posts = group_items[forloop.index0] %}
-        <h2 id="{{ tag | slugify }}" class="archive__subtitle"  style="font-size: 1.25em; color: #0085a1; font-weight: normal"><i class="fa fa-fw fa-tags" aria-hidden="true"></i>{{ tag }}</h2>
-        {% for post in posts %}
-          {% include archive-single-onlyheader.html %}
-        {% endfor %}
-      {% endfor %}
-    </div>
-  </div>
-</div>
+{% for tag in group_names %}
+  {% assign posts = group_items[forloop.index0] %}
+  <h2 id="{{ tag | slugify }}" class="archive__subtitle"  style="font-size: 1.25em; color: #0085a1; font-weight: normal"><i class="fa fa-fw fa-tags" aria-hidden="true"></i>{{ tag }}</h2>
+  {% for post in posts %}
+    {% include archive-single-onlyheader.html %}
+  {% endfor %}
+{% endfor %}
+
 
 

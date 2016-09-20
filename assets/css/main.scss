@@ -39,12 +39,7 @@
 @import "print";
 
 #all_tags {
-    margin: 20px 0;
-    @include breakpoint($large) {
-      @include span(10 of 12 last);
-      @include prefix(0.5 of 12);
-      @include suffix(2 of 12);
-    }
+    @include full();
     .tag_keyword {
         display: inline-block;
         margin: 5px 2px;
@@ -61,8 +56,14 @@
 }
 
 .categories_keyword {
+    @include full();
     list-style: none;
     color: #0085a1;
+    display: block;
+    -webkit-margin-before: 0.7em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
     &:hover {
         text-decoration: underline;
     }
