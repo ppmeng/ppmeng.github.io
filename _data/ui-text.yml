@@ -11,9 +11,9 @@ zh: &DEFAULT_ZH
   toc_label                  : "当前页"
   ext_link_label             : "链接"
   less_than                  : "less than"
-  minute_read                : "minute read"
+  to_read                    : "to read"
   share_on_label             : "分享到："
-  meta_label                 :
+  meta_label                 : "Meta:"
   tags_label                 : "标签"
   categories_label           : "分类"
   date_label                 : "更新于"
@@ -68,7 +68,7 @@ en: &DEFAULT_EN
   less_than                  : "less than"
   minute_read                : "minute read"
   share_on_label             : "Share on"
-  meta_label                 :
+  meta_label                 : "Meta:"
   tags_label                 : "Tags:"
   categories_label           : "Categories:"
   date_label                 : "Updated:"

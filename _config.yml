@@ -10,9 +10,9 @@ favicon                  : "favicon.ico"
 repository               : "ppmeng/ppmeng.github.io"
 teaser                   : "site-logo.png"
 breadcrumbs              : true
-words_per_minute         : 100
+words_per_minute         : 180
 comments:
-  provider               : "custom" # false (default), "disqus", "staticman", "custom" 目前采用的是多说，配置并测试过staticman
+  provider               : "staticman" # false (default), "disqus", "staticman", "custom" 目前采用的是多说，配置并测试过staticman
 staticman:
   allowedFields          : ['name', 'email', 'url', 'message']
   branch                 : "master"# "master", "gh-pages"
