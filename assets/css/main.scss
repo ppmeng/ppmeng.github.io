@@ -40,6 +40,11 @@
 
 #all_tags {
     margin: 20px 0;
+    @include breakpoint($large) {
+      @include span(10 of 12 last);
+      @include prefix(0.5 of 12);
+      @include suffix(2 of 12);
+    }
     .tag_keyword {
         display: inline-block;
         margin: 5px 2px;
@@ -52,21 +57,6 @@
         &:hover {
             background-color: rgb(0, 133, 161);
         }
-    }
-    @media (min-width: 80em) {
-        & {
-            padding-right: 400px;
-        }        
-    }
-    @media (min-width: 64em) {
-        & {
-            padding-right: 300px;
-        }        
-    }
-    @media (min-width: 48em) {
-        & {
-            padding-right: 200px;
-        }        
     }
 }
 

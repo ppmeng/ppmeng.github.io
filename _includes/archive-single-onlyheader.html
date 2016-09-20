@@ -5,8 +5,8 @@
 {% else %}
   {% assign title = post.title %}
 {% endif %}
-
-<div class="{{ include.type | default: "list" }}__item">
+ 
+<div class="{{ include.type | default: "list" }}__items">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     <h2 class="archive__item-title" itemprop="headline" style="margin:1em 0 0 2em;font-size:1.1em;color: #494e52;font-weight: normal">
       {% if post.link %}

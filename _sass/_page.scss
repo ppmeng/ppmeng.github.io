@@ -17,6 +17,7 @@
 }
 
 .page {
+ 
   @include breakpoint($large) {
     @include span(10 of 12 last);
     @include prefix(0.5 of 12);
@@ -49,7 +50,6 @@
 }
 
 .page__content {
-  font-size: 16px;
   h2 {
     padding-bottom: 0.5em;
     border-bottom: 1px solid $border-color;
