@@ -98,9 +98,10 @@
 
   a {
     color: $link-color-hover;
-    &:before{
+    &:before {
       content: "\00BB \0020";
     }
+  }
 }
 /*
    Author profile and links
