@@ -47,16 +47,19 @@
 
 .sidebar__right {
   margin-bottom: 1em;
-
+  top:0;
+  right: 1em;
   @include breakpoint($large) {
-    position: relative;
+    display: block;
+    position: absolute;
     float: right;
-    width: $right-sidebar-width-narrow;
+    width: 250px;
     margin-left: span(0.5 of 12);
     z-index: 10;
   }
 
   @include breakpoint($x-large) {
+    display: block;
     width: $right-sidebar-width;
   }
 }
