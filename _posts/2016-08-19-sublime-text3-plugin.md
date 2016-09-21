@@ -1,6 +1,6 @@
 ---
 title: "常用的Sublime Text3插件汇总"
-categories: "工具"
+categories: "tool"
 tags: ["插件", "编译器"]
 ---
 
