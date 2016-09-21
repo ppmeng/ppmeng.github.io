@@ -67,14 +67,41 @@
     width: $right-sidebar-width;
   }
 
+  h4 {
+    margin: 1em 0 0;
+    padding-left: 0.75em;
+    font-size: 13px;
+    line-height: 1.8em;
+    color: #9ba1a6;
+  }
+
+  li {
+    list-style: none;
+  }
+
   a {
     color: $link-color;
     &:hover {
       color: $link-color-hover;
+      text-decoration: underline;
     }
   }
 }
 
+#hot__post {
+  li {
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  a {
+    color: $link-color-hover;
+    &:before{
+      content: "\00BB \0020";
+    }
+}
 /*
    Author profile and links
    ========================================================================== */
