@@ -49,6 +49,10 @@
   margin-bottom: 1em;
   top:0;
   right: 1em;
+  background-color: #fff;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  box-shadow: $box-shadow;
   @include breakpoint($large) {
     display: block;
     position: absolute;
@@ -61,6 +65,13 @@
   @include breakpoint($x-large) {
     display: block;
     width: $right-sidebar-width;
+  }
+
+  a {
+    color: $link-color;
+    &:hover {
+      color: $link-color-hover;
+    }
   }
 }
 

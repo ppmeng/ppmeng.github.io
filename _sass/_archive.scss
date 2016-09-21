@@ -25,7 +25,6 @@
   padding-bottom: 0.5em;
   font-size: $type-size-5;
   color: mix(#fff, $gray, 25%);
-  border-bottom: 1px solid $border-color;
 
   + .list__item .archive__item-title {
     margin-top: 0.5em;
@@ -83,16 +82,19 @@
    ========================================================================== */
 
 .list__item {
+  &:first-of-type {
+    border-top: 1px solid $border-color;
+  }
   @include breakpoint($medium) {
-    padding-right: $right-sidebar-width-narrow;
+    margin-right: $right-sidebar-width-narrow;
   }
 
   @include breakpoint($large) {
-    padding-right: $right-sidebar-width;
+    margin-right: $right-sidebar-width;
   }
 
   @include breakpoint($x-large) {
-    padding-right: $right-sidebar-width-wide;
+    margin-right: $right-sidebar-width-wide;
   }
 
   .page__meta {
