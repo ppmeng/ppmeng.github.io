@@ -36,6 +36,7 @@
     <p class="archive__item-excerpt" itemprop="description" style="margin-bottom: .6em">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %} {% if post.modified %}
     <p class="page__meta" style="text-align: right">
       <time datetime="{{ post.modified | date: " %Y-%m-%d " }}">Posted by JiaLin on {{ post.modified | date: "%B %d, %Y" }}</time>
+      <span class="ds-thread-count" data-thread-key="{{ post.id }}" data-count-type="comments"></span>
     </p>
     {% elsif post.date %}
     <p class="page__meta" style="text-align: right">
