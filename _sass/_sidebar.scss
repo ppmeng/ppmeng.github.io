@@ -56,7 +56,6 @@
   @include breakpoint($large) {
     display: block;
     position: absolute;
-    float: right;
     width: 250px;
     margin-left: span(0.5 of 12);
     z-index: 10;
@@ -66,6 +65,10 @@
     display: block;
     width: $right-sidebar-width;
   }
+  
+  @media screen and (max-width: $large) {
+    display: none;
+  }
 
   h4 {
     margin: 1em 0 0;
@@ -74,8 +77,12 @@
     line-height: 1.8em;
     color: #9ba1a6;
   }
-
+  ul {
+    margin: 0;
+    padding-left: 0.5em;
+  }
   li {
+    margin: 0;
     list-style: none;
     font-size: 13px;
     white-space: nowrap;

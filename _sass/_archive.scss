@@ -76,15 +76,7 @@
   }
 }
 
-
-/*
-   List view
-   ========================================================================== */
-
-.list__item {
-  &:first-of-type {
-    border-top: 1px solid $border-color;
-  }
+.main-content {
   @include breakpoint($medium) {
     margin-right: $right-sidebar-width-narrow;
   }
@@ -96,7 +88,16 @@
   @include breakpoint($x-large) {
     margin-right: $right-sidebar-width-wide;
   }
+}
 
+/*
+   List view
+   ========================================================================== */
+
+.list__item {
+  &:first-of-type {
+    border-top: 1px solid $border-color;
+  }
   .page__meta {
     margin: 0 0 4px;
   }

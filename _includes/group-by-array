@@ -45,3 +45,4 @@
 <!-- Push to group_items -->
 {% assign group_items = group_items | push: __item %}
 {% endfor %}
+

@@ -15,7 +15,7 @@ id: "pages/categories"
 <blockquote style="border-left-color:#eee">
   <div id="all_categories" class="rightbar">
     {% for category in group_names %}
-      <p class="categories_keyword"><a href="{{ category | slugify | prepend: '#' }}">{{ category }}</a></p>
+      <p class="categories_keyword"><a href="{{ category | slugify | prepend: '#' }}"><span class="post_time">{{ post.date | date:"%d/%m/%Y"}}<span>{{ category | first }} <span class="post_num">({{ category | last | size }})</span></a></p>
     {% endfor %}
   </div>
 </blockquote>
