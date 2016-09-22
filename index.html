@@ -42,14 +42,33 @@ author_profile: true
   <!--文章归档 start-->
   <div id="all__posts" class="right-items">
     <h4 class="right-minititle">文章归档</h4>
-    {% capture written_time %}'None'{% endcapture %}
+    {% assign time_list = '' | split: ',' %}
+    {% capture post_time %}'notime'{% endcapture %}
+    {% for post in site.posts %}
+      {% capture time_item %}{{ post.date | date: '%Y-%m' }}{% endcapture %}
+      {% if time_item != post_time %}
+        {% capture post_time %}{{ time_item }}{% endcapture %}
+        {% assign time_list = time_list | push: post_time %}
+      {% endif %}
+   {% endfor %}
+   
+   {% assign group_by_timelist = '' | split: ',' %}
+   {% for t in time_list %}
+     {% assign _item_ = '' | split: ',' %}
+     {% for post in site.posts %}
+       {% capture post_t %}{{ post.date | date: '%Y-%m' }}{% endcapture %}
+       {% if post_t == t %}
+         {% assign _item_ =  _item_ | push: post_t %}
+       {% endif %}
+     {% endfor %}
+     {% assign group_by_timelist = group_by_timelist | push: _item_ %}
+   {% endfor %}
+
     <ul>
-      {% for post in site.posts %} 
-      {% capture time %}{{ post.date | date: '%Y %B' }}{% endcapture %} 
-        {% if time != written_time %} 
-        {% capture written_time %}{{ time }}{% endcapture %}
-        <li class="{{ time | slugify }} time_list"><a href="{{ base_path | append: '/post-by-month' | append: '#' }}{{ time }}">{{ time }}</a></li>
-        {% endif %} 
+      {% for eachtime in time_list %}
+        <li class="{{ eachtime | slugify }} time_list">
+          <a href="{{ base_path | append: '/post-by-month/' | append: '#' }}{{ eachtime }}">{{ eachtime }}&nbsp;({{ group_by_timelist[forloop.index0] | size }})</a>
+        </li>
       {% endfor %}
     </ul>
   </div>

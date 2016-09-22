@@ -11,7 +11,7 @@ id: "pages/tags"
 
 <p id="all_tags">
   {% for tag in group_names %}
-    <span class="tag_keyword"><a href="{{ tag | slugify | prepend: '#'}}">{{ tag }}</a></span>
+    <span class="tag_keyword"><a href="{{ tag | slugify | prepend: '#'}}">{{ tag }} ({{ group_items[forloop.index0] | size }})</a></span>
   {% endfor %}
 </p>
       
