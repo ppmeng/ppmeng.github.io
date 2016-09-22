@@ -3,18 +3,24 @@ layout: archive
 author_profile: true 
 --- 
 
-{% include base_path %} {% include group-by-array collection=site.posts field="categories"%}
+{% include base_path %} 
+
+{% include group-by-array collection=site.posts field="categories" %}
 
 
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
 
-{% for post in paginator.posts %} {% include archive-single.html %} {% endfor %} {% include paginator.html %}
+{% for post in paginator.posts %} 
+  {% include archive-single.html %} 
+{% endfor %} 
+
+{% include paginator.html %}
 
 <div class="sidebar__right">
   <!-- 多说热评文章 start -->
   <div id="hot__posts" class="right-items">
     <h4 class="right-minititle">热评文章</h4>
-    <div class="ds-top-threads" data-range="daily" data-num-items="5"></div>
+    <div class="ds-top-threads" data-range="weekly" data-num-items="5"></div>
   </div>
   <!-- 多说热评文章 end -->
 
@@ -25,7 +31,7 @@ author_profile: true
     {% endif %}
     <ul>
       {% for category in group_names %}
-      <li class="category_item"><a href="{{base_path | append: '/categories/'}}{{ category | slugify | prepend: '#' }}">{{ category | first }}&nbsp;({{ category | last | size }})</a></li>
+      <li class="category_item"><a href="{{ base_path | append: '/categories/' }}{{ category | slugify | prepend: '#' }}">{{ category | first }}&nbsp;({{ category | last | size }})</a></li>
       {% endfor %}
     </ul>
   </div>
@@ -49,11 +55,12 @@ author_profile: true
   //多说公共JS代码 start (一个网页只需插入一次) 
   var duoshuoQuery = {short_name:"ppmenghomecom"};
 	(function() {
-	  var ds = document.createElement('script');
+		var ds = document.createElement('script');
 		ds.type = 'text/javascript';ds.async = true;
 		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
 		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
 	})();
   //多说公共JS代码 end 
 
