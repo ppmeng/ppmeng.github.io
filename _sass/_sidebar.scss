@@ -66,7 +66,8 @@
     width: $right-sidebar-width;
   }
   
-  @media screen and (max-width: $large) {
+  $width: $large - 1px;
+  @media screen and (max-width: $width) {
     display: none;
   }
 
@@ -80,10 +81,11 @@
 
   ul {
     margin: 0;
-    padding-left: 0.5em;
+    padding: 0;
   }
   li {
     margin: 0;
+    padding-left: 0.5em;
     list-style: none;
     font-size: 13px;
     white-space: nowrap;

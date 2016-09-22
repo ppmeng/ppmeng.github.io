@@ -5,8 +5,7 @@ author_profile: true
 
 {% include base_path %} 
 
-{% include group-by-array collection=site.posts field="categories" %}
-
+{% include group-by-array %}
 
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
 
@@ -25,18 +24,16 @@ author_profile: true
   <!-- 多说热评文章 end -->
 
   <!--文章分类 start-->
+  <!--category[0] 标签名； category[1]该标签下文章-->
   <div id="categories" class="right-items">
-    {% if group_names %}
+    {% if site.categories %}
     <h4 class="right-minititle">文章分类</h4>
     {% endif %}
+    
     <ul>
-      {% for category in group_names %}
-      {% assign num = 0 %}
+      {% for category in site.categories %}
       <li class="category_item">
-        {% for post in category | prepend: 'site.categories.' %}
-          {% assign num = num | plus: 1 %}
-        {% endfor %}
-        <a href="{{ base_path | append: '/categories/' }}{{ category | slugify | prepend: '#' }}">{{ category }}&nbsp;({{ num }})</a>
+        <a href="{{ base_path | append: '/categories/' }}{{ category | slugify | prepend: '#' }}">{{ category[0] }}{{ category | last | size }}</a>
       </li>
       {% endfor %}
     </ul>
@@ -48,10 +45,13 @@ author_profile: true
     <h4 class="right-minititle">文章归档</h4>
     {% capture written_time %}'None'{% endcapture %}
     <ul>
-      {% for post in site.posts %} {% capture time %}{{ post.date | date: '%Y %B' }}{% endcapture %} {% if time != written_time
-      %} {% capture written_time %}{{ time }}{% endcapture %}
-      <li class="{{ time | slugify }} time_list"><a href="{{ base_path | append: '/post-by-month' | append: '#' }}{{ time }}">{{ time }}</a></li>
-      {% endif %} {% endfor %}
+      {% for post in site.posts %} 
+      {% capture time %}{{ post.date | date: '%Y %B' }}{% endcapture %} 
+        {% if time != written_time %} 
+        {% capture written_time %}{{ time }}{% endcapture %}
+        <li class="{{ time | slugify }} time_list"><a href="{{ base_path | append: '/post-by-month' | append: '#' }}{{ time }}">{{ time }}</a></li>
+        {% endif %} 
+      {% endfor %}
     </ul>
   </div>
   <!--文章归档 end-->

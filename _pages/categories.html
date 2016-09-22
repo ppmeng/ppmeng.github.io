@@ -18,7 +18,6 @@ id: "pages/categories"
     {% for category in group_names %}
       <p class="categories_keyword">
         <a href="{{ category | slugify | prepend: '#' }}">{{ category }} 
-          <span class="post_num">({{ category | prepend: 'site.categories.' | size }})</span>
         </a>
       </p>
     {% endfor %}
