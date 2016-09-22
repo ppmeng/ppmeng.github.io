@@ -5,7 +5,6 @@ author_profile: true
 
 {% include base_path %} 
 
-{% include group-by-array %}
 
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
 
@@ -33,7 +32,7 @@ author_profile: true
     <ul>
       {% for category in site.categories %}
       <li class="category_item">
-        <a href="{{ base_path | append: '/categories/' }}{{ category | slugify | prepend: '#' }}">{{ category[0] }}{{ category | last | size }}</a>
+        <a href="{{ base_path | append: '/categories/' }}{{ category[0] | slugify | prepend: '#' }}">{{ category[0] }}&nbsp;({{ category | last | size }})</a>
       </li>
       {% endfor %}
     </ul>
