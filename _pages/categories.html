@@ -12,10 +12,15 @@ id: "pages/categories"
 {% if group_names %}
   <h2 style="font-size: 1.25em; color: #0085a1; font-weight: normal">分类列表</h2>
 {% endif %}
+
 <blockquote style="border-left-color:#eee">
   <div id="all_categories" class="rightbar">
     {% for category in group_names %}
-      <p class="categories_keyword"><a href="{{ category | slugify | prepend: '#' }}">{{ category }} <span class="post_num">({{ site.categories | append: '.' | append: '{{ category }}' | size }})</span></a></p>
+      <p class="categories_keyword">
+        <a href="{{ category | slugify | prepend: '#' }}">{{ category }} 
+          <span class="post_num">({{ category | prepend: 'site.categories.' | size }})</span>
+        </a>
+      </p>
     {% endfor %}
   </div>
 </blockquote>
