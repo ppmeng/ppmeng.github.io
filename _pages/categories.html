@@ -17,7 +17,7 @@ id: "pages/categories"
   <div id="all_categories" class="rightbar">
     {% for category in group_names %}
       <p class="categories_keyword">
-        <a href="{{ category | slugify | prepend: '#' }}">{{ category }}&nbsp;({{ category | last | size }}){{ group_items | size }} </a>
+        <a href="{{ category | slugify | prepend: '#' }}">{{ category }}&nbsp;({{ category | last | size }}){{ group_items[forloop.index0] | size }} </a>
       </p>
     {% endfor %}
   </div>
