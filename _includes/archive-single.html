@@ -41,11 +41,11 @@
     
     <p class="page__meta">
     {% if post.modified %}
-      <time datetime="{{ post.modified | date: " %Y-%m-%d " }}">发布于{{ post.modified | date: "%Y-%m-%d %R" }}</time>
+      <time datetime="{{ post.modified | date: " %Y-%m-%d " }}">发布于{{ post.modified | date: "%Y-%m-%d" }}</time>
     {% elsif post.date %}
-      <time datetime="{{ post.date | date_to_xmlschema }}">发布于{{ post.date | date: "%Y-%m-%d %R" }}</time>
+      <time datetime="{{ post.date | date_to_xmlschema }}">发布于{{ post.date | date: "%Y-%m-%d" }}</time>
     {% endif %}
-      <span class="ds-thread-count" data-thread-key="{{ post.id }}" data-count-type="comments"></span>
+      <a href="{{ base_path }}{{ post.url | append: '#comments' }}" class="ds-thread-count" data-thread-key="{{ post.id }}" data-count-type="comments"></a>
     </p>
     
   </article>
