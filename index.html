@@ -22,7 +22,7 @@ author_profile: true
     {% unless page.header.overlay_color or page.header.overlay_image %}
       <h1 class="page__title">{{ page.title }}</h1>
     {% endunless %}
-    <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+      <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
     {% for post in paginator.posts %} 
       {% include archive-single.html %} 
     {% endfor %} 
@@ -47,7 +47,7 @@ author_profile: true
   </div>
   <!--文章分类 end -->
 
-  <!--文章归档 start-->
+  <!--文章归档 start--> 
   <div id="all__posts" class="right-items">
     <h4 class="right-minititle">文章归档</h4>
     {% assign time_list = '' | split: ',' %}
@@ -71,7 +71,7 @@ author_profile: true
      {% endfor %}
      {% assign group_by_timelist = group_by_timelist | push: _item_ %}
    {% endfor %}
-
+   <!--按照时间统计文章数目 start-->
     <ul>
       {% for eachtime in time_list %}
         <li class="{{ eachtime | slugify }} time_list">
@@ -79,6 +79,7 @@ author_profile: true
         </li>
       {% endfor %}
     </ul>
+    <!--按照时间统计文章数目 end-->
   </div>
   <!--文章归档 end-->
 
@@ -89,25 +90,5 @@ author_profile: true
   </div>
   <!-- 多说热评文章 end -->
 </div>
-
 </div>
-
-
-
-
-<script type="text/javascript">
-  //多说公共JS代码 start (一个网页只需插入一次) 
-  var duoshuoQuery = {short_name:"ppmenghomecom"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-  //多说公共JS代码 end 
-
-  //按照时间统计文章数目 start
- 
-</script>
+{% include /comments-providers/custom.html %}
