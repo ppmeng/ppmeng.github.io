@@ -20,7 +20,7 @@ author_profile: true
   <!-- 多说热评文章 start -->
   <div id="hot__posts" class="right-items">
     <h4 class="right-minititle">热评文章</h4>
-    <div class="ds-top-threads" data-range="weekly" data-num-items="5"></div>
+    <div class="ds-top-threads" data-range="daily" data-num-items="5"></div>
   </div>
   <!-- 多说热评文章 end -->
 
@@ -31,7 +31,13 @@ author_profile: true
     {% endif %}
     <ul>
       {% for category in group_names %}
-      <li class="category_item"><a href="{{ base_path | append: '/categories/' }}{{ category | slugify | prepend: '#' }}">{{ category | first }}&nbsp;({{ category | last | size }})</a></li>
+      {% assign num = 0 %}
+      <li class="category_item">
+        {% for post in category | prepend: 'site.categories.' %}
+          {% assign num = num | plus: 1 %}
+        {% endfor %}
+        <a href="{{ base_path | append: '/categories/' }}{{ category | slugify | prepend: '#' }}">{{ category }}&nbsp;({{ num }})</a>
+      </li>
       {% endfor %}
     </ul>
   </div>
