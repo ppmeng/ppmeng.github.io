@@ -1,27 +1,35 @@
 --- 
-layout: archive 
+layout: default 
 author_profile: true 
 --- 
 
 {% include base_path %} 
 
+{% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
+  {% include page__hero.html %}
+{% endif %}
 
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+{% if page.url != "/" and site.breadcrumbs %}
+  {% unless paginator %}
+    {% include breadcrumbs.html %}
+  {% endunless %}
+{% endif %}
 
-{% for post in paginator.posts %} 
-  {% include archive-single.html %} 
-{% endfor %} 
+<div id="main" role="main">
+  {% include sidebar.html %}
 
-{% include paginator.html %}
-
-<div class="sidebar__right">
-  <!-- 多说热评文章 start -->
-  <div id="hot__posts" class="right-items">
-    <h4 class="right-minititle">热评文章</h4>
-    <div class="ds-top-threads" data-range="daily" data-num-items="5"></div>
+  <div class="archive">
+    {% unless page.header.overlay_color or page.header.overlay_image %}
+      <h1 class="page__title">{{ page.title }}</h1>
+    {% endunless %}
+    <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+    {% for post in paginator.posts %} 
+      {% include archive-single.html %} 
+    {% endfor %} 
+    {% include paginator.html %}
   </div>
-  <!-- 多说热评文章 end -->
-
+  
+  <div class="sidebar__right">
   <!--文章分类 start-->
   <!--category[0] 标签名； category[1]该标签下文章-->
   <div id="categories" class="right-items">
@@ -73,7 +81,19 @@ author_profile: true
     </ul>
   </div>
   <!--文章归档 end-->
+
+  <!-- 多说热评文章 start -->
+  <div id="hot__posts" class="right-items">
+    <h4 class="right-minititle">热评文章</h4>
+    <div class="ds-top-threads" data-range="daily" data-num-items="5"></div>
+  </div>
+  <!-- 多说热评文章 end -->
 </div>
+
+</div>
+
+
+
 
 <script type="text/javascript">
   //多说公共JS代码 start (一个网页只需插入一次) 
