@@ -30,18 +30,23 @@
       <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>      {% else %}
       <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a> {% endif %}
     </h2>
+
     {% if post.read_time %}
     <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
-    {% endif %} {% if post.excerpt %}
-    <p class="archive__item-excerpt" itemprop="description" style="margin-bottom: .6em">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %} {% if post.modified %}
-    <p class="page__meta" style="text-align: right">
-      <time datetime="{{ post.modified | date: " %Y-%m-%d " }}">Posted by JiaLin on {{ post.modified | date: "%B %d, %Y" }}</time>
+    {% endif %} 
+
+    {% if post.excerpt %}
+    <p class="archive__item-excerpt" itemprop="description" style="margin-bottom: .6em">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>
+    {% endif %} 
+    
+    <p class="page__meta">
+    {% if post.modified %}
+      <time datetime="{{ post.modified | date: " %Y-%m-%d " }}">发布于{{ post.modified | date: "%Y-%m-%d %R" }}</time>
+    {% elsif post.date %}
+      <time datetime="{{ post.date | date_to_xmlschema }}">发布于{{ post.date | date: "%Y-%m-%d %R" }}</time>
+    {% endif %}
       <span class="ds-thread-count" data-thread-key="{{ post.id }}" data-count-type="comments"></span>
     </p>
-    {% elsif post.date %}
-    <p class="page__meta" style="text-align: right">
-      <time datetime="{{ post.date | date_to_xmlschema }}">Posted by JiaLin on {{ post.date | date: "%B %d, %Y" }}</time>
-    </p>
-    {% endif %}
+    
   </article>
 </div>

@@ -99,6 +99,10 @@
   
   .page__meta {
     margin: 0 0 4px;
+    text-align: right;
+    .ds-thread-count {
+      margin: 0 0 0 1em;
+    }
   }
 }
 
