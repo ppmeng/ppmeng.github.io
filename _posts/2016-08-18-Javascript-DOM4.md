@@ -6,7 +6,7 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 
 {% include toc %}
 
-## [Modernizr](http://www.modernizr.com/)
+## Modernizr
 
 [Modernizr](https://modernizr.com/docs)是一个开源JavaScript库，用法和功能如下：
 
