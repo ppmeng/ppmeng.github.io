@@ -4,7 +4,6 @@ categories: "JavaScript"
 tags: ["JavaScript", "DOM", "读书笔记"]
 ---
 
-{% include toc %}
 一般而言，在网页设计的时候，我们应该选择最适用的工具去解决问题，具体来讲就是使用**HTML**去搭建文档的结构，使用**CSS**去设计文档的呈现效果，使用**JavaScript**去实现文档的交互行为，但是在这三者之间并不是完全的相斥而是有一部分的重叠区域，比如使用DOM里面的 *createElement* 和 *appendChild* 可以改变网页的结构，比如由于每个元素节点都有属性*style*，改变元素节点的这个属性即可获得和CSS一致的效果，并且在CSS中使用`：hover` 这些伪类可以触发和使用JavaScript中 *onmouseover* 等相似的响应事件，所以我们不仅需要一一掌握这三者的具体使用还需要了解他们之间的联系，以便在具体实践中选择最适合的方法解决问题
 
 上周在[理解DOM脚本编程背后的艺术（一）](http://ppmenghome.com/javascript/Javascript-DOM1/)里面以创建图片库的形式讲解了JavaScript中一些主要的DOM操作，那这次就主要使用上周已经掌握的DOM操作，设计一些具体实例，来分析 **JavaScript** 和 **HTML**，**CSS** 的联系以及使用
@@ -134,3 +133,5 @@ tr:nth-child(even) {
 依旧以表格为例，鼠标移过每行元素时改变字体样式，点击查看------[demo](http://codepen.io/ppmeng/pen/RaQGBy)
 
 [demo](http://codepen.io/ppmeng/pen/RaQGBy)里面采用 `onmouseover` 来代替`：hover`，其实使用 `：hover` 时仅仅需要在tr的样式里面添加 `tr:hover` 并在这个类里面添加字体样式即可，比DOM要简单得多。 之所以还要使用DOM是因为伪类`：hover`除了在改变链接的样式时得到了绝大多数浏览器的支持，在其他元素上依然还是有一部分浏览器不支持(但是[W3school ：hover](http://www.w3school.com.cn/cssref/selector_hover.asp)里面说所有主流浏览器都支持 `:hover` 选择器。并且`:hover` 选择器用于选择鼠标指针浮动在上面的元素。`:hover` 选择器可用于所有元素，不只是链接。照这样看在这儿使用DOM有点儿鸡肋)，按照书上来说，本着选择确保更多浏览器支持的原则，DOM的 `onmouseover` 可以很好的代替`：hover`，具体就是先获取所有的tr再使用for循环一一改变在 `onmouseover` 和 `onmouseout` 下的字体样式达到响应的目的
+
+{% include toc %}
