@@ -70,7 +70,7 @@
    - sidebar.html
    - social-share.html
    - tag-list.html
-   - toc ———— 页面文章部分快捷导航-sidebar-right
+   - toc ———— 页面文章部分快捷导航-sidebar-right  http://kramdown.gettalong.org/converter/html.html#toc
 4. _layouts
    - archive.html
    - archive-taxonomy.html
