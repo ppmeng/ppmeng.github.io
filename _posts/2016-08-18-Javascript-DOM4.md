@@ -5,7 +5,9 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 ---
 
 {% include toc %}
+
 ## [Modernizr](http://www.modernizr.com/)
+
 [Modernizr](https://modernizr.com/docs)是一个开源JavaScript库，用法和功能如下：
 
 1.  在文档中嵌入Modernizr之后，他会随着页面加载改变一些标签的class属性，使用的时候要在<html>标签里面添加no-js的类，这样在浏览器不支持JS的时候就会应用css样式，
@@ -13,6 +15,7 @@ tags: ["JavaScript", "DOM", "读书笔记"]
 3. 帮老旧浏览器处理HTML5的新元素而不用用户自己定义：关于使用：在[Modernizr](http://www.modernizr.com/)下载并在<head>中添加`<script src="文件本地地址></script>`以便在文档呈现之前传建好html5元素
 
 ## HTML5新元素
+
 点击查看[HTML5标签](http://www.w3school.com.cn/tags/index.asp)
 
 ```

@@ -391,6 +391,7 @@
   box-shadow: $box-shadow;
 
   .nav__title {
+    padding: 0.5rem;
     color: #fff;
     font-size: $type-size-6;
     background: $primary-color;
@@ -404,7 +405,7 @@
   padding: 0;
   width: 100%;
   list-style: none;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 
   a {
     display: block;
@@ -418,12 +419,6 @@
     &:hover {
       color: #000;
       background: $lighter-gray;
-    }
-  }
-
-  > li:last-child {
-    a {
-      border-bottom: none;
     }
   }
 
