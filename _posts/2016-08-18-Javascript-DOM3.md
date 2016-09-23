@@ -4,7 +4,7 @@ categories: "JavaScript"
 tags: ["JavaScript", "DOM", "读书笔记"]
 ---
 
-
+{% include toc %}
 前面提到了使用JavaScript来修改文档的样式信息，但是随着浏览器的的不断升级更新，CSS的兼容性以及功能也越来越强大，所以总的来说使用CSS来改变样式依旧是最佳的选择，但是要想达到随着时间的变化而不断改变元素样式的话，CSS就没有办法了，而JavaScript可以很完美的实现，其中动画就是随着时间不断改变样式（元素位置）的例子之一
 ## 简单动画之定时改变元素位置
 点击查看一个甜蜜的demo------[demo](http://ppmeng.github.io/somedemo/JavaScript/animation/kiss/kiss.html)

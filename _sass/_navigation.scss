@@ -371,7 +371,15 @@
 /*
    Table of contents navigation
    ========================================================================== */
-
+.aside_toc {
+  position: absolute;
+  width: 15%;
+  right: 1em;
+  top: 0;
+  @media screen and (max-width: 1023px) {
+    display: none;
+  }
+}
 .toc {
   font-family: $sans-serif-narrow;
   color: $gray;
@@ -400,7 +408,7 @@
 
   a {
     display: block;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     color: $gray;
     font-size: $type-size-7;
     font-weight: bold;
@@ -420,7 +428,7 @@
   }
 
   li ul > li a {
-    padding-left: 2rem;
+    padding-left: 1rem;
     font-weight: normal;
   }
 

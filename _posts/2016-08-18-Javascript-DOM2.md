@@ -4,7 +4,7 @@ categories: "JavaScript"
 tags: ["JavaScript", "DOM", "读书笔记"]
 ---
 
-
+{% include toc %}
 一般而言，在网页设计的时候，我们应该选择最适用的工具去解决问题，具体来讲就是使用**HTML**去搭建文档的结构，使用**CSS**去设计文档的呈现效果，使用**JavaScript**去实现文档的交互行为，但是在这三者之间并不是完全的相斥而是有一部分的重叠区域，比如使用DOM里面的 *createElement* 和 *appendChild* 可以改变网页的结构，比如由于每个元素节点都有属性*style*，改变元素节点的这个属性即可获得和CSS一致的效果，并且在CSS中使用`：hover` 这些伪类可以触发和使用JavaScript中 *onmouseover* 等相似的响应事件，所以我们不仅需要一一掌握这三者的具体使用还需要了解他们之间的联系，以便在具体实践中选择最适合的方法解决问题
 
 上周在[理解DOM脚本编程背后的艺术（一）](http://ppmenghome.com/javascript/Javascript-DOM1/)里面以创建图片库的形式讲解了JavaScript中一些主要的DOM操作，那这次就主要使用上周已经掌握的DOM操作，设计一些具体实例，来分析 **JavaScript** 和 **HTML**，**CSS** 的联系以及使用

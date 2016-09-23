@@ -4,6 +4,8 @@ categories: "工具"
 tags: ["插件", "编译器"]
 ---
 
+{% include toc %}
+
 整理一下平时用到的sublime插件
 
 ## Package Control
