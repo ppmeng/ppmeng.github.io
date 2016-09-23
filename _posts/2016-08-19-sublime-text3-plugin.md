@@ -4,8 +4,6 @@ categories: "工具"
 tags: ["插件", "编译器"]
 ---
 
-{% include toc %}
-
 整理一下平时用到的sublime插件
 
 ## Package Control
@@ -68,3 +66,5 @@ Clone or download 下面给出的github链接指向的仓库文件到sublime下�
 ## Terminal
 - Ctrl+Shift+T 打开终端
 - [Terminal github repo](https://github.com/wbond/sublime_terminal)
+
+{% include toc %}

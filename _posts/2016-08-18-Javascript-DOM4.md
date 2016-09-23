@@ -4,8 +4,6 @@ categories: "JavaScript"
 tags: ["JavaScript", "DOM", "读书笔记"]
 ---
 
-{% include toc %}
-
 ## Modernizr
 
 [Modernizr](https://modernizr.com/docs)是一个开源JavaScript库，用法和功能如下：
@@ -138,3 +136,4 @@ window.onload = function() {
 5. 为了解决这个问题还看了一些别的资料，[CORS（CrossOrigin Resource Sharing）跨域资源共享](http://www.it165.net/pro/html/201412/29106.html), [Ajax跨域、Json跨域、Socket跨域和Canvas跨域等同源策略限制的解决方法](http://blog.csdn.net/freshlover/article/details/44223467#comments)，[如何捕获和分析 JavaScript Error](http://www.css88.com/archives/5014), 看看涨涨姿势就好了，不过不得不承认遇到问题去Stackflow比百度强多了
 6. CSS解决办法：[使用CSS将图片转换成黑白(灰色、置灰](http://www.zhangxinxu.com/wordpress/2012/08/css-svg-filter-image-grayscale/), 然后在鼠标悬停和离开的时候切换设置不同的属性，，更快而且不用考虑跨域问题
 
+{% include toc %}
