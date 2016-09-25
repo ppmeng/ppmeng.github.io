@@ -3,7 +3,7 @@
 # Chinese
 # -----------------
 zh: &DEFAULT_ZH
-  page                       : "页码"
+  page                       : "Page"
   pagination_previous        : "前一页"
   pagination_next            : "后一页"
   breadcrumb_home_label      : "Home"
