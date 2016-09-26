@@ -92,16 +92,18 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: $link-color;
+    &:hover {
+      color: $link-color-hover;
+    }
     a:before {
         content: "\00BB \0020";
     }
   }
 
   a {
-    color: $link-color;
     text-decoration: none;
     &:hover {
-      color: $link-color-hover;
       text-decoration: underline;
     }
   }
