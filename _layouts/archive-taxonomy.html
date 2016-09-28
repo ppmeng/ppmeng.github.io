@@ -1,16 +1,17 @@
 ---
 layout: default
-author_profile: false
+author_profile: true
 ---
+
+{% include base_path %}
 
 <div id="main" role="main">
   {% include sidebar.html %}
 
   <div class="archive">
     <h1 class="page__title">{{ page.title }}</h1>
-    {% include base_path %}
-    {% for post in page.posts %}
-      {% include archive-single.html %}
-    {% endfor %}
+    {{ content }}
   </div>
+
+  {% include sidebar-right %}
 </div>
