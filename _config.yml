@@ -1,7 +1,7 @@
-# Site Settings
+# Site Settings 
 locale                   : "zh-CN"
 title                    : "PPMENG BLOG"
-title_separator          : "|"
+title_separator          : "-"
 name                     : "王佳林"
 description              : "Hei~这是基于jekyll和github搭建的个人博客，希望可以分享一些前端技术总结以及生活中值得回忆的事情~一起进步吧"
 url                      : "http://ppmenghome.com"
