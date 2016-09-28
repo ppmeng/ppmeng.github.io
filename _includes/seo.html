@@ -46,7 +46,11 @@
   {% assign seo_author_twitter = seo_author_twitter | replace: "@", "" %}
 {% endif %}
 
-<meta property="og:locale" content="{{ site.locale | replace: "-", "_" | default: "zh-CN" }}">
+<meta name="keyword" content="PPMENG BLOG, 前端, html, JS, jQuery, React, 笔记">
+<meta name="description" content="{{ seo_description }}">
+<meta name="author" content="{{ site.author.name }}">
+
+<meta property="og:locale" content="{{ site.locale | replace: "-", "_" | default: "zh-cmn-Hans" }}">
 <meta property="og:site_name" content="{{ site.title }}">
 <meta property="og:title" content="{{ page.title | default: site.title | markdownify | strip_html | strip_newlines | escape_once }}">
 
