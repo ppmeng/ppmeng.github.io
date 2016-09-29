@@ -59,12 +59,6 @@ layout: default
         {% include archive-single.html type="grid" %}
       {% endfor %}
     </div>
-
-    <div class="grid__wrapper">
-        {% for post in site.related_posts limit:4 %}
-          {% include archive-single.html type="grid" %}
-        {% endfor %}
-      </div>
   </article>
 
   {% comment %}<!-- only show related on a post page when not disabled -->{% endcomment %}
