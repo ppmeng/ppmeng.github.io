@@ -54,11 +54,17 @@ layout: default
       {% if page.share %}{% include social-share.html %}{% endif %}
 
       {% include post_pagination.html %}
+
+      {% for post in site.related_posts limit: 4 %}
+        {% include archive-single.html type="grid" %}
+      {% endfor %}
     </div>
 
-    {% if site.comments.provider and page.comments %}
-      {% include comments.html %}
-    {% endif %}
+    <div class="grid__wrapper">
+        {% for post in site.related_posts limit:4 %}
+          {% include archive-single.html type="grid" %}
+        {% endfor %}
+      </div>
   </article>
 
   {% comment %}<!-- only show related on a post page when not disabled -->{% endcomment %}

@@ -1,5 +1,5 @@
 # Site Settings 
-locale                   : "zh-CN"
+locale                   : "zh-cmn-Hans"
 title                    : "PPMENG BLOG"
 title_separator          : "-"
 name                     : "王佳林"
