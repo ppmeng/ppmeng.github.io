@@ -53,6 +53,8 @@ zh-CHS:
   <<: *DEFAULT_ZH
 zh-CHT:
   <<: *DEFAULT_ZH
+zh-cmn-Hans:
+  <<: *DEFAULT_ZH
 
 
 # English
