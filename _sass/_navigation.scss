@@ -426,7 +426,9 @@
     padding-left: 1rem;
     font-weight: normal;
   }
-
+  li > ul li > ul li a {
+    padding-left: 2rem;
+  }
   /* hide sub sub links on small screens*/
   li > ul li {
     display: none;
