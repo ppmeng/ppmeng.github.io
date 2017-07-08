@@ -31,7 +31,7 @@
   ol {
     padding: 0;
     list-style: none;
-    font-size: $type-size-6;
+    font-size: $type-size-14;
 
     @include breakpoint($large) {
       @include span(10 of 12 last);
