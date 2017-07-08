@@ -26,6 +26,7 @@ $(document).ready(function(){
   $("#main").fitVids();
 
   // init sticky sidebar
+  console.log($(".sticky"));
   $(".sticky").Stickyfill();
 
   var stickySideBar = function(){
