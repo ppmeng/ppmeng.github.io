@@ -176,7 +176,7 @@ defaults:
     values:
       layout: single
       comments: true
-      share: true
+      share: false
 
 
 category_archive:
